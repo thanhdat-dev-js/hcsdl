@@ -272,12 +272,12 @@ def make_nha_xuat_ban(n=N_NHA_XUAT_BAN):
     g = IdGenerator(prefix="NXB")
     ma = [g.next() for _ in range(n)]
 
-    ten = ["ten NXB" for _ in range(n)]
+    ten = [PUBLISHERS[i]["name"] for i in range(n)]
 
-    email = [make_email("lienhe", ten[i]) for i in range(n)]
+    email = [make_email("lienhe", ten[i], False) for i in range(n)]
     sdt = [make_phone() for _ in range(n)]
-    dia_chi = [make_address() for _ in range(n)]
-    website = ["www.nxb.com" for _ in range(n)]
+    dia_chi = [PUBLISHERS[i]["address"] for i in range(n)]
+    website = ["www." + domainize(ten[i]) for i in range(n)]
 
     return pd.DataFrame({
         "ma": ma,

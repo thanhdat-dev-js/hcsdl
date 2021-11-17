@@ -5,16 +5,16 @@ from no_accent_vietnamese import no_accent_vietnamese
 
 from data import *
 
+def email_namize(s: str):
+    return no_accent_vietnamese(s).lower().replace(" ", ".")
+
+def domainize(s: str, extension=".com"):
+    return no_accent_vietnamese(s).lower().replace(" ", "") + extension
 
 class EmailGenerator:
     def __init__(self):
         self.counter = randint(1, 10000)
 
-    def email_namize(cls, s: str):
-        return no_accent_vietnamese(s).lower().replace(" ", ".")
-
-    def domainize(cls, s: str, extension=".com"):
-        return no_accent_vietnamese(s).lower().replace(" ", "") + extension
 
     def make_email(self, name: str, domain: str, enforce_unique=True):
         unique_part = ""
@@ -25,8 +25,8 @@ class EmailGenerator:
 
     def make_email_org(self, name: str, org: str="sahafake", enforce_unique=True):
         return self.make_email(
-            name=self.email_namize(name),
-            domain=self.domainize(org),
+            name=email_namize(name),
+            domain=domainize(org),
             enforce_unique=enforce_unique
         )
 
