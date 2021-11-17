@@ -108,7 +108,6 @@ CREATE TABLE quyen_sach (
     ma                      CHAR(12)        NOT NULL,
     ma_dau_sach             CHAR(12)        NOT NULL,
     ma_chi_nhanh            CHAR(12)        NOT NULL,
-    ma_don_hang             CHAR(12),
     PRIMARY KEY (ma, ma_dau_sach)
 );
 

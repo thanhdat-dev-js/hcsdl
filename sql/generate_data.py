@@ -260,13 +260,11 @@ def make_quyen_sach(n=N_QUYEN_SACH):
     ma = [g.next() for _ in range(n)]
     ma_dau_sach = [None for _ in range(n)]
     ma_chi_nhanh = [None for _ in range(n)]
-    ma_don_hang = [None for _ in range(n)]
 
     return pd.DataFrame({
         "ma": ma,
         "ma_dau_sach": ma_dau_sach,
         "ma_chi_nhanh": ma_chi_nhanh,
-        "ma_don_hang": ma_don_hang,
     })
 
 
@@ -427,7 +425,6 @@ def fk_don_hang(don_hang, thu_ngan, quan_ly, nhan_vien, thanh_vien, bao_gom, quy
 
     sl = {}
     tt = {}
-    qsdh = {}
 
     gdh = SequenceRandomizer(don_hang["ma"].tolist())
     gqs = SequenceRandomizer(quyen_sach["ma"].tolist())
@@ -438,8 +435,6 @@ def fk_don_hang(don_hang, thu_ngan, quan_ly, nhan_vien, thanh_vien, bao_gom, quy
         bao_gom["ma_don"][i] = ma_don
         bao_gom["ma_quyen_sach"][i] = ma_quyen_sach
 
-        qsdh[ma_quyen_sach] = ma_don
-
         ma_dau_sach = lookup(quyen_sach, "ma", ma_quyen_sach, "ma_dau_sach")
         gia = lookup(dau_sach, "ma", ma_dau_sach, "gia_niem_yet")
 
@@ -449,11 +444,6 @@ def fk_don_hang(don_hang, thu_ngan, quan_ly, nhan_vien, thanh_vien, bao_gom, quy
         sl[ma_don] += 1
         tt[ma_don] += gia
 
-    n = len(quyen_sach)
-    for i in range(n):
-        ma = quyen_sach["ma"][i]
-        if ma in qsdh:
-            quyen_sach["ma_don_hang"][i] = qsdh[ma]
 
     gtv = SequenceRandomizer(thanh_vien["cccd"].tolist())
     gtn = SequenceRandomizer(thu_ngan["ma"].tolist())

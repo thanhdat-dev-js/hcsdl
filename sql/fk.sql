@@ -64,9 +64,7 @@ ALTER TABLE
 ADD FOREIGN KEY
     (ma_dau_sach) REFERENCES dau_sach(ma),
 ADD FOREIGN KEY
-    (ma_chi_nhanh) REFERENCES chi_nhanh(ma),
-ADD FOREIGN KEY
-    (ma_don_hang) REFERENCES don_hang(ma);
+    (ma_chi_nhanh) REFERENCES chi_nhanh(ma);
 
 ALTER TABLE
     voucher
