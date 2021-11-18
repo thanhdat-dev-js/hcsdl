@@ -234,10 +234,15 @@ def make_dau_sach(n=N_DAU_SACH):
     g = IdGenerator(prefix="DSA")
     ma = [g.next() for _ in range(n)]
 
-    g = SequenceRandomizer(BOOK_NAMES)
-    ten = [g.next() for _ in range(n)]
+    g = SequenceRandomizer(BOOKS)
+    ten = []
+    the_loai = []
+    for _ in range(n):
+        book = g.next()
+        ten.append(book["name"])
+        the_loai.append(book["category"])
+
     tac_gia = [make_name() for _ in range(n)]
-    the_loai = ["the loai" for _ in range(n)]
     gia_nhap = [randint(50, 3000)*1000 for _ in range(n)]
     gia_niem_yet = [randint(50, 3000)*1000 for _ in range(n)]
     so_luong = [randint(1, 10) for _ in range(n)]

@@ -30,6 +30,42 @@ HUMAN_NAMES = [
 ]
 
 
+BOOKS = [
+    {"name": "Cây Cam Của Bạn", "category": "truyện"},
+    {"name": "Lời giải tiếng Anh 12", "category": "giáo dục"},
+    {"name": "Tâm lý học cơ bản", "category": "kiến thức"},
+    {"name": "Nhà hóa học", "category": "truyện"},
+    {"name": "Đòi nợ", "category": "truyện"},
+    {"name": "Tù nhân của triết lý", "category": "kiến thức"},
+    {"name": "Những con số thay đổi thế giới", "category": "kiến thức"},
+    {"name": "Tâm lý học đặc biệt", "category": "kiến thức"},
+    {"name": "Giấc mơ của Sasa", "category": "truyện"},
+    {"name": "Chúa và con người", "category":"kiến thức"},
+    {"name": "Kiếp sinh nhân", "category": "đạo giáo"},
+    {"name": "Giảm 10kg trong 2 tuần", "category": "kỹ năng"},
+    {"name": "Đọc nhanh cảm xúc và ngôn ngữ cơ thể", "category": "kỹ năng"},
+    {"name": "Bá tước Ca-lốt", "category": "truyện"},
+    {"name": "Tô vẽ bình yên", "category": "sách vẽ"},
+    {"name": "Đam mê để làm gì", "category": "kỹ năng"},
+    {"name": "Mind Map cho người mới bắt đầu", "category": "kỹ năng"},
+    {"name": "Chinh phục IELTS", "category": "giáo dục"},
+    {"name": "Giao tiếp tiếng Nhật", "category": "giáo dục"},
+    {"name": "Ngệ thuật làm tiền", "category": "kỹ năng"},
+    {"name": "Những người vui sướng", "category": "truyện"},
+    {"name": "WWW 2021", "category": "kiến thức"},
+    {"name": "Những con người vĩ đại", "category": "truyện"},
+    {"name": "Kế toán quản trị cho các doanh nghiệp", "category": "kỹ năng"},
+    {"name": "Nghệ thuật đầu tư", "category": "kỹ năng"},
+    {"name": "Trò chơi con mực", "category": "truyện"},
+    {"name": "Giết chết con chim sẽ", "category": "truyện"},
+    {"name": "Trên biển", "category": "truyện"},
+    {"name": "Vãn tình", "category": "truyện"},
+    {"name": "Hắc dạ hành", "category": "đạo giáo"},
+    {"name": "Mẹ giàu mẹ nghèo", "category": "kỹ năng"},
+    {"name": "Chú bé đội mũ trắng", "category": "kỹ năng"},
+]
+
+
 BOOK_NAMES = [
     "Cây Cam Của Bạn",
     "Lời giải tiếng Anh 12",
