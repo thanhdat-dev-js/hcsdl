@@ -197,7 +197,7 @@ DECLARE total INT;
     DECLARE done INT DEFAULT false;  
     DECLARE cur CURSOR FOR SELECT gia_nhap from dau_sach;  
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = true; 
-    IF gianhap < 0 THEN
+    IF gianhap <= 0 THEN
 SIGNAL SQLSTATE '45000'
 			SET MESSAGE_TEXT = 'tham số đầu vào (giá nhập) phải > 0';
 END IF;
@@ -219,6 +219,10 @@ END$$
 DELIMITER ;
 
 
+ SELECT so_dau_sach_gia_nhap_lon_n(200000);
+ SELECT so_dau_sach_gia_nhap_lon_n(-10000);
+
+
 DELIMITER
     $$
 
@@ -228,7 +232,7 @@ DECLARE total INT;
     DECLARE done INT DEFAULT false;  
     DECLARE cur CURSOR FOR SELECT so_luong from dau_sach;  
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = true; 
-    IF max_sl < 0 THEN
+    IF max_sl <= 0 THEN
 SIGNAL SQLSTATE '45000'
 			SET MESSAGE_TEXT = 'tham số đầu vào max_sl phải > 0';
 END IF;
@@ -250,5 +254,6 @@ END$$
 
 DELIMITER ;
 
-
+SELECT so_dau_sach_it_hon_n_cuon(20);
+SELECT so_dau_sach_it_hon_n_cuon(-10);
 ````
