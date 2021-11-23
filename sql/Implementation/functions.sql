@@ -12,7 +12,7 @@ BEGIN
         SELECT MAX(nha_xuat_ban.ma) FROM nha_xuat_ban
     );
     SET ma = next_id(ma);
-    
+
     INSERT INTO
         nha_xuat_ban
     VALUES
@@ -21,3 +21,18 @@ END;
 
 
 
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` FUNCTION `next_id`(`id` CHAR(12)) RETURNS char(12) CHARSET utf8mb4
+BEGIN
+	DECLARE prefix CHAR(3);
+    DECLARE postfix CHAR(9);
+    DECLARE num INT;
+
+    SET prefix = LEFT(id, 3);
+    SET postfix = RIGHT(id, 9);
+	SET num = CAST(postfix AS INT) + 1;
+    SET postfix = LPAD(num, 9, '0');
+
+	RETURN CONCAT(prefix, postfix);
+END$$
+DELIMITER ;
