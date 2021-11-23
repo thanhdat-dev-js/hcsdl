@@ -189,6 +189,8 @@ CALL get_data_2(4);
 Cau 4:
 
 
+DELIMITER
+    $$
 CREATE DEFINER=`root`@`localhost` FUNCTION `so_dau_sach_gia_nhap_lon_n` (`gianhap` DECIMAL(11,2)) RETURNS INT(11) BEGIN
 DECLARE total INT; 
 	DECLARE temp INT;
@@ -214,6 +216,11 @@ END IF;
     CLOSE cur;  
     RETURN total;  
 END$$
+DELIMITER ;
+
+
+DELIMITER
+    $$
 
 CREATE DEFINER=`root`@`localhost` FUNCTION `so_dau_sach_it_hon_n_cuon` (`max_sl` INT) RETURNS INT(11) BEGIN
 DECLARE total INT; 
@@ -242,5 +249,6 @@ END IF;
 END$$
 
 DELIMITER ;
+
 
 ````
