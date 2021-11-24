@@ -6,7 +6,7 @@ from no_accent_vietnamese import no_accent_vietnamese
 
 def last_name_first_name(name):
     isep = name.rindex(' ')
-    return name[isep:].strip(), name[:isep].strip()
+    return name[:isep].strip(), name[isep:].strip()
 
 
 def random_date(begin: date, end: date):
@@ -32,7 +32,9 @@ def dumps_sql_value(value):
 
 def dumps_sql_insert_commands(table, table_name):
     commands = ""
-    prefix = f"INSERT INTO {table_name} VALUES"
+    tbl = ", ".join(table.columns)
+    tbl = f"{table_name}({tbl})"
+    prefix = f"INSERT INTO {tbl} VALUES"
     for row in table.itertuples(index=False):
         command = prefix + "("
         command += ", ".join(

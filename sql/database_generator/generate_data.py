@@ -89,7 +89,6 @@ def make_nhan_vien(n=N_NHAN_VIEN):
     ma_chi_nhanh = [None for _ in range(n)]
     ma_quan_ly = [None for _ in range(n)]
 
-
     return pd.DataFrame({
         "ma": ma,
         "ho": ho,
@@ -243,8 +242,10 @@ def make_dau_sach(n=N_DAU_SACH):
         the_loai.append(book["category"])
 
     tac_gia = [make_name() for _ in range(n)]
-    gia_nhap = [randint(50, 3000)*1000 for _ in range(n)]
+
     gia_niem_yet = [randint(50, 3000)*1000 for _ in range(n)]
+    gia_nhap = [(gia_niem_yet[i]//1000 * 9 // 10) * 1000 for i in range(n)]
+
     so_luong = [randint(1, 10) for _ in range(n)]
     ma_nha_xuat_ban = [None for _ in range(n)]
 

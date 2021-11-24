@@ -997,9 +997,9 @@ PUBLISHERS = [
 
 
 BRANCHES = [
-    "Đà Nẵng",
-    "Hồ Chí Minh",
-    "Nha Trang",
-    "Hà Nội",
-    "Huế",
+    "Cơ Sở 1",
+    "Cơ Sở 2",
+    "Cơ Sở 3",
+    "Cơ Sở 4",
+    "Cơ Sở 5",
 ]
