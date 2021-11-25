@@ -23,7 +23,11 @@ if ($result_dau_sach->num_rows > 0) {
         <td scope="col">' . $row["gia_niem_yet"] . '</td>
         <td scope="col">' . $row["so_luong"] . '</td>
         <td scope="col">' . $row["ma_nha_xuat_ban"] . '</td>
-        <td scope="col"><button class="btn btn-secondary">Sửa</button></td>
+        <td scope="col">
+        <form action="sua_dau_sach.php" method="GET">
+        <input type="text" value="' . $row["ma"] . '" name ="ma_sach" hidden>
+        <button class="btn btn-secondary">Sửa</button></td>
+        </form>
         <td scope="col">
           <form action="" method="POST">
             <input type="text" value="' . $row["ma"] . '" name ="ma_sach" hidden>
