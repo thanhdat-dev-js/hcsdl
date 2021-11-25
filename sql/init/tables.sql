@@ -149,9 +149,3 @@ CREATE TABLE ap_dung_cho (
     ma_dau_sach             CHAR(12)        NOT NULL,
     PRIMARY KEY (ma_voucher, ma_dau_sach)
 );
-
-
--- CREATE INDEX ma_nhan_vien_index ON nhan_vien(ma_nhan_vien);
-
-
-

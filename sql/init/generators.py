@@ -1,9 +1,8 @@
-from function import *
 from random import randint, shuffle
 
-from no_accent_vietnamese import no_accent_vietnamese
-
+from functions import *
 from data import *
+from no_accent_vietnamese import no_accent_vietnamese
 
 def email_namize(s: str):
     return no_accent_vietnamese(s).lower().replace(" ", ".")

@@ -5,8 +5,8 @@ import pandas as pd
 import numpy as np
 
 from data import *
-from function import *
-from generator import *
+from functions import *
+from generators import *
 
 pd.options.mode.chained_assignment = None  # default='warn'
 
@@ -605,20 +605,18 @@ if __name__ == "__main__":
     commands += dumps_sql_insert_commands(giam_gia_van_chuyen, "giam_gia_van_chuyen")
     commands += dumps_sql_insert_commands(ap_dung_cho, "ap_dung_cho")
 
-    with open("insert.sql", mode="wb+") as f:
+    with open("inserts.sql", mode="wb+") as f:
         f.write(commands.encode())
 
     all_commands = ""
-    with open("create_table.sql", "r", encoding="utf-8") as f:
+    with open("tables.sql", "r", encoding="utf-8") as f:
         all_commands = f.read()
 
-    all_commands += commands
+    all_commands += "\n"*3 + commands
 
-    with open("fk.sql", "r", encoding="utf-8") as f:
-        all_commands += f.read()
+    with open("foreign_keys.sql", "r", encoding="utf-8") as f:
+        all_commands += "\n"*3 + f.read()
 
     with open("all.sql", mode="w+", encoding="utf-8") as f:
         f.write(all_commands)
-
-
 
