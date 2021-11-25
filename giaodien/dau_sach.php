@@ -23,7 +23,11 @@ if ($result_dau_sach->num_rows > 0) {
         <td scope="col">' . $row["gia_niem_yet"] . '</td>
         <td scope="col">' . $row["so_luong"] . '</td>
         <td scope="col">' . $row["ma_nha_xuat_ban"] . '</td>
-        <td scope="col"><button class="btn btn-secondary">Sửa</button></td>
+        <td scope="col">
+        <form action="sua_dau_sach.php" method="GET">
+        <input type="text" value="' . $row["ma"] . '" name ="ma_sach" hidden>
+        <button class="btn btn-secondary">Sửa</button></td>
+        </form>
         <td scope="col">
           <form action="" method="POST">
             <input type="text" value="' . $row["ma"] . '" name ="ma_sach" hidden>
@@ -58,7 +62,7 @@ $conn->close();
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#" style="font-weight: 700;">Bảng đầu sách</a>
+      <a class="navbar-brand" href="dau_sach.php" style="font-weight: 700;">Bảng đầu sách</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
