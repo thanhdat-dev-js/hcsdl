@@ -3,7 +3,7 @@ CREATE DEFINER=`root`@`localhost`
 FUNCTION `next_id`(
     `id` CHAR(12)
 )
-RETURNS char(12) CHARSET utf8mb4
+RETURNS char(12)
 BEGIN
     DECLARE prefix CHAR(3);
     DECLARE postfix CHAR(9);
@@ -322,7 +322,11 @@ BEGIN
         FROM chi_nhanh
         WHERE chi_nhanh.ten = ten_chi_nhanh
     );
-    -- kiem tra khong tim thay chi nhanh
+    IF ISNULL(ma_chi_nhanh) THEN
+    BEGIN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'khong tim thay chi nhanh';
+    END;
+    END IF;
 
     IF la_quan_ly THEN
         SET ma_quan_ly = ma;
@@ -332,8 +336,13 @@ BEGIN
             FROM quan_ly
             WHERE quan_ly.ma_chi_nhanh = ma_chi_nhanh
         );
+        IF ISNULL(ma_chi_nhanh) THEN
+        BEGIN
+            SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'khong tim thay quan ly';
+            -- not tested
+        END;
+        END IF;
     END IF;
-    -- kiem tra khong tim thay quan ly
 
     INSERT INTO nhan_vien
     VALUES
@@ -347,6 +356,8 @@ END$$
 DELIMITER ;
 
 
+
+-- CALL them_nhan_vien(null, "a", CAST("2000-08-29" AS DATE), "a@a.a", "0123456789", null, "123123123123", 100000000, CAST("2017-07-20" AS DATE), "Co So 1", 0);
 
 
 
