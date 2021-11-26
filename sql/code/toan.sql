@@ -184,7 +184,7 @@ BEGIN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'id is null';
     END IF;
     IF LENGTH(id) <> 12 THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "id's length is not 12";
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'length of id is not 12';
     END IF;
 END$$
 DELIMITER ;
@@ -219,6 +219,69 @@ DELIMITER ;
 
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost`
+PROCEDURE `assert_age_aleast`(
+    IN  `date_of_birth`         DATE,
+    IN  `age_lower_bound`       INT
+)
+leave_label:
+BEGIN
+    IF ISNULL(date_of_birth) THEN
+        LEAVE leave_label;
+    END IF;
+
+    set @age = TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE());
+    IF @age < age_lower_bound THEN
+        SET @age_str = CAST(@age AS CHAR);
+        SET @alb_str = CAST(age_lower_bound AS CHAR);
+        SET @message = CONCAT('age is ', @age_str, ', which is smaller than ', @alb_str);
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
+    END IF;
+END$$
+DELIMITER ;
+
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
+FUNCTION `employee_minimum_salary`(
+    `start_date`            DATE
+)
+RETURNS DECIMAL(11, 2)
+BEGIN
+    set @worked_years = TIMESTAMPDIFF(YEAR, start_date, CURDATE());
+    set @salary = (@worked_years + 1) * 4420000;
+    RETURN @salary;
+END$$
+DELIMITER ;
+
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
+PROCEDURE `assert_employee_has_minimum_salary`(
+    IN  `start_date`            DATE,
+    IN  `salary`                DECIMAL(11, 2)
+)
+leave_label:
+BEGIN
+    IF ISNULL(start_date) OR ISNULL(salary) THEN
+        LEAVE leave_label;
+    END IF;
+
+    set @min_salary = employee_minimum_salary(start_date);
+    IF salary < @min_salary THEN
+        SET @salary_str = CAST(salary AS CHAR);
+        SET @min_salary_str = CAST(@min_salary AS CHAR);
+        SET @message = CONCAT('salary is ', @salary_str, ', which is smaller minimun salary ', @min_salary_str);
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
+    END IF;
+END$$
+DELIMITER ;
+
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
 PROCEDURE `them_nhan_vien`(
     IN  `ho`                    VARCHAR(20),
     IN  `ten`                   VARCHAR(20),
@@ -239,14 +302,14 @@ BEGIN
 
     CALL assert_has_value_varchar(ten, "ten");
     CALL assert_has_value_date(ngay_sinh, "ngay_sinh");
-    -- kiem tra duoi 18 tuoi
+    CALL assert_age_aleast(ngay_sinh, 18);
     CALL assert_has_value_varchar(email, "email");
     CALL assert_valid_email(email);
     CALL assert_has_value_char(sdt, "sdt");
     CALL assert_valid_phone(sdt);
     CALL assert_has_value_char(cccd, "cccd");
     CALL assert_has_value_decimal(luong, "luong");
-    -- kiem tra dieu kien luong
+    CALL assert_employee_has_minimum_salary(thoi_gian_bat_dau_lam, luong);
     CALL assert_has_value_date(thoi_gian_bat_dau_lam, "thoi_gian_bat_dau_lam");
 
     SET ma = (
@@ -281,4 +344,19 @@ BEGIN
         VALUES (ma, ma_chi_nhanh);
     END IF;
 END$$
+DELIMITER ;
+
+
+
+
+
+
+
+
+DELIMITER $$
+CREATE TRIGGER `kiem_tra_luong_nhan_vien`
+BEFORE INSERT ON `nhan_vien`
+FOR EACH ROW
+BEGIN
+END $$
 DELIMITER ;
