@@ -80,11 +80,11 @@ def make_nhan_vien(n=N_NHAN_VIEN):
         for _ in range(n)
     ]
 
-    nam_da_lam = [
-        int((date.today() - thoi_gian_bat_dau_lam[i]).days/365.2425) + 1
+    he_so_luong = [
+        int((date.today() - thoi_gian_bat_dau_lam[i]).days/365.2425)//3 + 1
         for i in range(n)
     ]
-    luong = [BASIC_WAGE*nam_da_lam[i] for i in range(n)]
+    luong = [BASIC_WAGE*he_so_luong[i] for i in range(n)]
 
     ma_chi_nhanh = [None for _ in range(n)]
     ma_quan_ly = [None for _ in range(n)]

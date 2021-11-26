@@ -7,7 +7,7 @@
 -- cccd:                                CHAR(12)
 -- tien:                                DECIMAL(11, 2)      max = 10^9 = 1 ty
 
-DROP SCHEMA sahafake;
+DROP SCHEMA IF EXISTS sahafake;
 
 CREATE SCHEMA sahafake;
 

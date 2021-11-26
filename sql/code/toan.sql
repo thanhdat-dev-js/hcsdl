@@ -95,16 +95,12 @@ PROCEDURE `assert_has_value_varchar`(
 BEGIN
     set @name = IFNULL(name, "VARCHAR");
     IF ISNULL(val) THEN
-    BEGIN
         set @message = CONCAT(@name, " is null");
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
-    END;
     END IF;
     IF val = "" THEN
-    BEGIN
         set @message = CONCAT(@name, " is empty");
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
-    END;
     END IF;
 END$$
 DELIMITER ;
@@ -120,16 +116,12 @@ PROCEDURE `assert_has_value_char`(
 BEGIN
     set @name = IFNULL(name, "CHAR");
     IF ISNULL(val) THEN
-    BEGIN
         set @message = CONCAT(@name, " is null");
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
-    END;
     END IF;
     IF val = "" THEN
-    BEGIN
         set @message = CONCAT(@name, " is empty");
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
-    END;
     END IF;
 END$$
 DELIMITER ;
@@ -145,10 +137,8 @@ PROCEDURE `assert_has_value_date`(
 BEGIN
     set @name = IFNULL(name, "DATE");
     IF ISNULL(val) THEN
-    BEGIN
         set @message = CONCAT(@name, " is null");
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
-    END;
     END IF;
 END$$
 DELIMITER ;
@@ -164,10 +154,8 @@ PROCEDURE `assert_has_value_decimal`(
 BEGIN
     set @name = IFNULL(name, "DECIMAL");
     IF ISNULL(val) THEN
-    BEGIN
         set @message = CONCAT(@name, " is null");
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
-    END;
     END IF;
 END$$
 DELIMITER ;
@@ -249,7 +237,7 @@ FUNCTION `employee_minimum_salary`(
 RETURNS DECIMAL(11, 2)
 BEGIN
     set @worked_years = TIMESTAMPDIFF(YEAR, start_date, CURDATE());
-    set @salary = (@worked_years + 1) * 4420000;
+    set @salary = (FLOOR(@worked_years / 3) + 1) * 4420000;
     RETURN @salary;
 END$$
 DELIMITER ;
@@ -277,6 +265,51 @@ BEGIN
     END IF;
 END$$
 DELIMITER ;
+
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
+FUNCTION `supervisor_minimum_salary`(
+    `branch_id`                 CHAR(12)
+)
+RETURNS DECIMAL(11, 2)
+BEGIN
+    SET @salary = (
+        SELECT MAX(nhan_vien.luong)
+        FROM nhan_vien
+        WHERE nhan_vien.ma_chi_nhanh = branch_id
+    );
+    return @salary;
+END$$
+DELIMITER ;
+
+
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
+PROCEDURE `assert_supervisor_has_minimum_salary`(
+    IN  `branch_id`             CHAR(12),
+    IN  `salary`                DECIMAL(11, 2)
+)
+leave_label:
+BEGIN
+    IF ISNULL(branch_id) OR ISNULL(salary) THEN
+        LEAVE leave_label;
+    END IF;
+
+    set @min_salary = supervisor_minimum_salary(branch_id);
+    IF salary < @min_salary THEN
+        SET @salary_str = CAST(salary AS CHAR);
+        SET @min_salary_str = CAST(@min_salary AS CHAR);
+        SET @message = CONCAT('supervisor salary is ', @salary_str, ', which is smaller their employee maximum salary ', @min_salary_str);
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
+    END IF;
+END$$
+DELIMITER ;
+
+
 
 
 
@@ -323,13 +356,13 @@ BEGIN
         WHERE chi_nhanh.ten = ten_chi_nhanh
     );
     IF ISNULL(ma_chi_nhanh) THEN
-    BEGIN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'khong tim thay chi nhanh';
-    END;
     END IF;
 
     IF la_quan_ly THEN
         SET ma_quan_ly = ma;
+        CALL assert_supervisor_has_minimum_salary(ma_chi_nhanh, luong);
+        -- not tested
     ELSE
         SET ma_quan_ly = (
             SELECT quan_ly.ma
@@ -337,16 +370,13 @@ BEGIN
             WHERE quan_ly.ma_chi_nhanh = ma_chi_nhanh
         );
         IF ISNULL(ma_chi_nhanh) THEN
-        BEGIN
             SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'khong tim thay quan ly';
             -- not tested
-        END;
         END IF;
     END IF;
 
     INSERT INTO nhan_vien
-    VALUES
-        (ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly);
+    VALUES (ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly);
 
     if la_quan_ly THEN
         INSERT INTO nhan_vien
