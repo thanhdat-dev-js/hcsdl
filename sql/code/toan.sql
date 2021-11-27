@@ -385,19 +385,107 @@ BEGIN
 END$$
 DELIMITER ;
 
-
-
 -- CALL them_nhan_vien(null, "a", CAST("2000-08-29" AS DATE), "a@a.a", "0123456789", null, "123123123123", 100000000, CAST("2017-07-20" AS DATE), "Co So 1", 0);
 
+
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
+PROCEDURE `tom_tat_thong_tin_nhap_sach_theo_nha_xuat_ban`()
+leave_label:
+BEGIN
+    SELECT
+        nha_xuat_ban.ten, COUNT(*) AS so_luong_sach, SUM(dau_sach.gia_nhap) as tien_tra_nha_xuat_ban
+    FROM
+        nha_xuat_ban, dau_sach, quyen_sach
+    WHERE
+        dau_sach.ma_nha_xuat_ban = nha_xuat_ban.ma AND
+        quyen_sach.ma_dau_sach = dau_sach.ma
+    GROUP BY
+        nha_xuat_ban.ma
+    ORDER BY
+        quyen_sach.ma;
+END$$
+DELIMITER ;
+
+
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
+PROCEDURE `doanh_thu_chi_nhanh`()
+leave_label:
+BEGIN
+    SELECT
+        chi_nhanh.ten, SUM(thu_ngan.doanh_so) as doanh_so
+    FROM
+        chi_nhanh, nhan_vien, thu_ngan
+    WHERE
+        chi_nhanh.ma = nhan_vien.ma_chi_nhanh AND
+        nhan_vien.ma = thu_ngan.ma
+    GROUP BY
+        chi_nhanh.ma;
+END$$
+DELIMITER ;
+
+
+
+
+DELIMITER $$
+CREATE TRIGGER `kiem_tra_nhan_vien`
+BEFORE INSERT ON `nhan_vien`
+FOR EACH ROW
+BEGIN
+    CALL assert_age_aleast(NEW.ngay_sinh, 18);
+    CALL assert_valid_email(NEW.email);
+    CALL assert_valid_phone(NEW.sdt);
+    CALL assert_employee_has_minimum_salary(NEW.thoi_gian_bat_dau_lam, NEW.luong);
+END $$
+DELIMITER ;
+
+-- INSERT INTO nhan_vien VALUES ("NVI123123123", null, "a", CAST("2020-08-29" AS DATE), "a@a.a", "0123456789", null, "123123123123", 100000000, CAST("2017-07-20" AS DATE), "NBX000000000", "NVI000000000");
+
+
+
+DELIMITER $$
+CREATE TRIGGER `kiem_tra_nha_xuat_ban`
+BEFORE INSERT ON `nhan_vien`
+FOR EACH ROW
+BEGIN
+    CALL assert_valid_email(NEW.email);
+    CALL assert_valid_phone(NEW.sdt);
+END $$
+DELIMITER ;
+
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
+FUNCTION `discount_amount`(
+    `voucher_id`            CHAR(12),
+    `book_id`               CHAR(12)
+)
+RETURNS DECIMAL(11, 2)
+BEGIN
+    SET @cost = (SELECT gia_niem_yet FROM dau_sach WHERE ma = book_id);
+    SET @percentage = (SELECT phan_tram_giam FROM giam_gia WHERE ma = voucher_id);
+    SET @max_discount = (SELECT giam_toi_da FROM giam_gia WHERE ma = voucher_id);
+    SET @amount = LEAST(@max_discount, @percentage * @cost);
+    RETURN @amount;
+END$$
+DELIMITER ;
 
 
 
 
 
 DELIMITER $$
-CREATE TRIGGER `kiem_tra_luong_nhan_vien`
+CREATE TRIGGER `cap_nhap_gia_don_hang_khi_them_ap_dung_cho`
 BEFORE INSERT ON `nhan_vien`
 FOR EACH ROW
 BEGIN
 END $$
 DELIMITER ;
+-- not tested
+
