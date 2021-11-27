@@ -5,8 +5,8 @@ import pandas as pd
 import numpy as np
 
 from data import *
-from function import *
-from generator import *
+from functions import *
+from generators import *
 
 pd.options.mode.chained_assignment = None  # default='warn'
 
@@ -80,11 +80,11 @@ def make_nhan_vien(n=N_NHAN_VIEN):
         for _ in range(n)
     ]
 
-    nam_da_lam = [
-        int((date.today() - thoi_gian_bat_dau_lam[i]).days/365.2425) + 1
+    he_so_luong = [
+        int((date.today() - thoi_gian_bat_dau_lam[i]).days/365.2425)//3 + 1
         for i in range(n)
     ]
-    luong = [BASIC_WAGE*nam_da_lam[i] for i in range(n)]
+    luong = [BASIC_WAGE*he_so_luong[i] for i in range(n)]
 
     ma_chi_nhanh = [None for _ in range(n)]
     ma_quan_ly = [None for _ in range(n)]
@@ -605,20 +605,18 @@ if __name__ == "__main__":
     commands += dumps_sql_insert_commands(giam_gia_van_chuyen, "giam_gia_van_chuyen")
     commands += dumps_sql_insert_commands(ap_dung_cho, "ap_dung_cho")
 
-    with open("insert.sql", mode="wb+") as f:
+    with open("inserts.sql", mode="wb+") as f:
         f.write(commands.encode())
 
     all_commands = ""
-    with open("create_table.sql", "r", encoding="utf-8") as f:
+    with open("tables.sql", "r", encoding="utf-8") as f:
         all_commands = f.read()
 
-    all_commands += commands
+    all_commands += "\n"*3 + commands
 
-    with open("fk.sql", "r", encoding="utf-8") as f:
-        all_commands += f.read()
+    with open("foreign_keys.sql", "r", encoding="utf-8") as f:
+        all_commands += "\n"*3 + f.read()
 
     with open("all.sql", mode="w+", encoding="utf-8") as f:
         f.write(all_commands)
-
-
 

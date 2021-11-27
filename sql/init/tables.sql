@@ -7,7 +7,7 @@
 -- cccd:                                CHAR(12)
 -- tien:                                DECIMAL(11, 2)      max = 10^9 = 1 ty
 
-DROP SCHEMA sahafake;
+DROP SCHEMA IF EXISTS sahafake;
 
 CREATE SCHEMA sahafake;
 
@@ -149,9 +149,3 @@ CREATE TABLE ap_dung_cho (
     ma_dau_sach             CHAR(12)        NOT NULL,
     PRIMARY KEY (ma_voucher, ma_dau_sach)
 );
-
-
--- CREATE INDEX ma_nhan_vien_index ON nhan_vien(ma_nhan_vien);
-
-
-
