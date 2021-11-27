@@ -46,8 +46,6 @@ if (isset($_POST["btn_edit"])) {
     $result = $conn->query($sql);
     if ($result) {
       header("Location: dau_sach.php");
-    } else {
-      $check = true;
     }
   }
 }
@@ -105,8 +103,11 @@ if (isset($_POST["btn_edit"])) {
   <div class="container">
     <?php
     if ($check) echo '<div class="alert alert-warning" role="alert">
-      Vui lòng nhập đầy đủ dữ liệu
-    </div>'
+       Vui lòng điền đầy đủ thông tin
+     </div>';
+    if ($conn->error) echo '<div class="alert alert-warning" role="alert">
+       ' . $conn->error . '
+     </div>'
     ?>
     <form action="" method="POST">
       <div class="myform">
