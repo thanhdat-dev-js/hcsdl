@@ -1,7 +1,7 @@
 <?php
 include_once('init.php');
 
-$check = false;
+$not_enough_information = false;
 
 if (isset($_POST["btn_create"])) {
   $ten = $_POST["ten"];
@@ -15,9 +15,9 @@ if (isset($_POST["btn_create"])) {
     empty($ten) || empty($tac_gia) || empty($the_loai) ||    empty($gia_nhap)
                 || empty($gia_niem_yet) ||    empty($so_luong) || empty($ma_nha_xuat_ban)
   ) {
-    $check = true;
+    $not_enough_information = true;
   } else {
-    $sql = 'CALL them_dau_sach("' . $gia_nhap . '","'
+    $query = 'CALL them_nhan_vien("' . $gia_nhap . '","'
       . $gia_niem_yet . '","'
       . $ma_nha_xuat_ban . '","'
       . $so_luong . '","'
@@ -25,12 +25,16 @@ if (isset($_POST["btn_create"])) {
       . $ten . '","'
       . $the_loai
       . '")';
-    $result = $conn->query($sql);
+    $result = $conn->query($query);
     if ($result) {
-      header("Location: dau_sach.php");
+      header("Location: nhan_vien.php");
     }
   }
 }
+
+
+$query = 'SELECT ma, ten FROM chi_nhanh ORDER BY ma;';
+$chi_nhanh = $conn->query($query);
 
 
 ?>
@@ -90,12 +94,12 @@ if (isset($_POST["btn_create"])) {
 
   <div class="container">
     <?php
-    if ($check) echo '<div class="alert alert-warning" role="alert">
-      Vui lòng điền đầy đủ thông tin
-    </div>';
-    if ($conn->error) echo '<div class="alert alert-warning" role="alert">
-      ' . $conn->error . '
-    </div>'
+        if ($not_enough_information) echo '<div class="alert alert-warning" role="alert">
+          Vui lòng điền đầy đủ thông tin
+        </div>';
+        if ($conn->error) echo '<div class="alert alert-warning" role="alert">
+          ' . $conn->error . '
+        </div>'
     ?>
     <form action="" method="POST">
       <div class="myform">
@@ -113,11 +117,11 @@ if (isset($_POST["btn_create"])) {
         </div>
         <div class="mb-3">
           <label for="ngay_sinh" class="form-label">Ngày sinh</label>
-          <input type="text" class="form-control" name="ngay_sinh" id="ngay_sinh" require>
+          <input type="date" class="form-control" name="ngay_sinh" id="ngay_sinh" require>
         </div>
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
-          <input type="text" class="form-control" name="email" id="email" require>
+          <input type="email" class="form-control" name="email" id="email" require>
         </div>
         <div class="mb-3">
           <label for="sdt" class="form-label">Số điện thoại</label>
@@ -129,7 +133,7 @@ if (isset($_POST["btn_create"])) {
         </div>
         <div class="mb-3">
           <label for="thoi_gian_bat_dau_lam" class="form-label">Thời gian bắt đầu làm</label>
-          <input type="text" class="form-control" name="thoi_gian_bat_dau_lam" id="thoi_gian_bat_dau_lam" require>
+          <input type="date" class="form-control" name="thoi_gian_bat_dau_lam" id="thoi_gian_bat_dau_lam" require>
         </div>
         <div class="mb-3">
           <label for="luong" class="form-label">Lương</label>
@@ -138,9 +142,19 @@ if (isset($_POST["btn_create"])) {
         <div class="mb-3">
           <label for="ten_chi_nhanh" class="form-label">Chi nhánh</label>
           <select class="form-select" name="ten_chi_nhanh" require>
-            <option selected value="NXB000000000">NXB000000000</option>
-            <option value="NXB000000001">NXB000000001</option>
+            <?php 
+                while ($row = $chi_nhanh->fetch_assoc()) {
+                    $ma = $row['ma'];
+                    $ten = $row['ten'];
+                    $seleted = ($first) ? " selected " : "  ";
+                    echo "<option value=$ma>$ten</option>";
+                }
+            ?>
           </select>
+        </div>
+        <div class="mb-3">
+          <input type="checkbox" class="" name="la_quan_ly" id="la_quan_ly" require>
+          <label for="la_quan_ly" class="form-label">Là quản lý?</label>
         </div>
         <button class="btn btn-primary" type="submit" name="btn_create">Thêm nhân viên</button>
       </div>

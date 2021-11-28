@@ -362,6 +362,7 @@ BEGIN
     IF la_quan_ly THEN
         SET ma_quan_ly = ma;
         CALL assert_supervisor_has_minimum_salary(ma_chi_nhanh, luong);
+        -- test da co quan ly
         -- not tested
     ELSE
         SET ma_quan_ly = (
