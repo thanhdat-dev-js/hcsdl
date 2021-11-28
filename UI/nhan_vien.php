@@ -3,27 +3,27 @@ include_once('init.php');
 
 if (isset($_POST["btn-del"])) {
   $ma = $_POST["ma_sach"];
-  $query = "DELETE FROM dau_sach WHERE ma ='" . $ma . "';";
+  $query = "DELETE FROM nhan_vien WHERE ma ='" . $ma . "';";
   $conn->query($query);
 }
 
 $query = "SELECT\n"
-    . "    nhan_vien.ho,\n"
-    . "    nhan_vien.ten,\n"
-    . "    nhan_vien.cccd,\n"
-    . "    nhan_vien.ngay_sinh,\n"
-    . "    nhan_vien.email,\n"
-    . "    nhan_vien.sdt,\n"
-    . "    nhan_vien.dia_chi,\n"
-    . "    nhan_vien.thoi_gian_bat_dau_lam,\n"
-    . "    nhan_vien.luong,\n"
-    . "    chi_nhanh.ten AS ten_chi_nhanh\n"
-    . "FROM\n"
-    . "    nhan_vien, chi_nhanh\n"
-    . "WHERE\n"
-    . "    nhan_vien.ma_chi_nhanh = chi_nhanh.ma\n"
-    . "ORDER BY\n"
-    . "    chi_nhanh.ma;\n";
+  . "    nhan_vien.ho,\n"
+  . "    nhan_vien.ten,\n"
+  . "    nhan_vien.cccd,\n"
+  . "    nhan_vien.ngay_sinh,\n"
+  . "    nhan_vien.email,\n"
+  . "    nhan_vien.sdt,\n"
+  . "    nhan_vien.dia_chi,\n"
+  . "    nhan_vien.thoi_gian_bat_dau_lam,\n"
+  . "    nhan_vien.luong,\n"
+  . "    chi_nhanh.ten AS ten_chi_nhanh\n"
+  . "FROM\n"
+  . "    nhan_vien, chi_nhanh\n"
+  . "WHERE\n"
+  . "    nhan_vien.ma_chi_nhanh = chi_nhanh.ma\n"
+  . "ORDER BY\n"
+  . "    chi_nhanh.ma;\n";
 
 $result = $conn->query($query);
 if ($result->num_rows > 0) {
@@ -79,7 +79,7 @@ $conn->close();
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="dau_sach.php" style="font-weight: 700;">Bảng nhân viên</a>
+      <a class="navbar-brand" href="nhan_vien.php" style="font-weight: 700;">Bảng nhân viên</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

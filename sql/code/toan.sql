@@ -88,6 +88,38 @@ DELIMITER ;
 
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost`
+FUNCTION `is_valid_ssn`(
+    `ssn` CHAR(12)
+)
+RETURNS tinyint(1)
+BEGIN
+    DECLARE res BOOLEAN;
+    SET res = (SELECT ssn REGEXP '^[0-9]{12}$');
+    RETURN res;
+END$$
+DELIMITER ;
+
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
+PROCEDURE `assert_valid_ssn`(
+    IN  `ssn`                 CHAR(12)
+)
+leave_label:
+BEGIN
+    IF ISNULL(ssn) THEN
+        LEAVE leave_label;
+    END IF;
+    IF NOT is_valid_ssn(ssn) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'invalid ssn';
+    END IF;
+END$$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
 PROCEDURE `assert_has_value_varchar`(
     IN  `val`                   VARCHAR(255),
     IN  `name`                  VARCHAR(40)
@@ -325,12 +357,11 @@ PROCEDURE `them_nhan_vien`(
     IN  `cccd`                  CHAR(12),
     IN  `luong`                 DECIMAL(11,2),
     IN  `thoi_gian_bat_dau_lam` DATE,
-    IN  `ten_chi_nhanh`         VARCHAR(40),
+    IN  `ma_chi_nhanh`          CHAR(12),
     IN  `la_quan_ly`            BOOLEAN
 )
 BEGIN
     DECLARE ma                  CHAR(12);
-    DECLARE ma_chi_nhanh        CHAR(12);
     DECLARE ma_quan_ly          CHAR(12);
 
     CALL assert_has_value_varchar(ten, "ten");
@@ -341,6 +372,7 @@ BEGIN
     CALL assert_has_value_char(sdt, "sdt");
     CALL assert_valid_phone(sdt);
     CALL assert_has_value_char(cccd, "cccd");
+    CALL assert_valid_ssn(cccd);
     CALL assert_has_value_decimal(luong, "luong");
     CALL assert_employee_has_minimum_salary(thoi_gian_bat_dau_lam, luong);
     CALL assert_has_value_date(thoi_gian_bat_dau_lam, "thoi_gian_bat_dau_lam");
@@ -349,15 +381,6 @@ BEGIN
         SELECT max(nhan_vien.ma) FROM nhan_vien
     );
     SET ma = next_id(ma);
-
-    SET ma_chi_nhanh = (
-        SELECT chi_nhanh.ma
-        FROM chi_nhanh
-        WHERE chi_nhanh.ten = ten_chi_nhanh
-    );
-    IF ISNULL(ma_chi_nhanh) THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'khong tim thay chi nhanh';
-    END IF;
 
     IF la_quan_ly THEN
         SET ma_quan_ly = ma;
