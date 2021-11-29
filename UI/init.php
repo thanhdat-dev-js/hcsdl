@@ -12,14 +12,6 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-function console_log($data) {
-    $output = $data;
-    if (is_array($output))
-        $output = implode(',', $output);
-
-    echo '<script>console.log("' . $output . '");</script>';
-}
-
 function sql_string($value) {
     return "'$value'";
 }

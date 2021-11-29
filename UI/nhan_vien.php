@@ -1,30 +1,32 @@
 <?php
 include_once('init.php');
+include_once('console_log.php');
 
 if (isset($_POST["btn-del"])) {
-  $ma = $_POST["ma_sach"];
+  $ma = $_POST["ma"];
   $query = "DELETE FROM nhan_vien WHERE ma ='" . $ma . "';";
   $conn->query($query);
 }
 
-$query = "SELECT\n"
-  . "    nhan_vien.ho,\n"
-  . "    nhan_vien.ten,\n"
-  . "    nhan_vien.cccd,\n"
-  . "    nhan_vien.ngay_sinh,\n"
-  . "    nhan_vien.email,\n"
-  . "    nhan_vien.sdt,\n"
-  . "    nhan_vien.dia_chi,\n"
-  . "    nhan_vien.thoi_gian_bat_dau_lam,\n"
-  . "    nhan_vien.luong,\n"
-  . "    chi_nhanh.ten AS ten_chi_nhanh\n"
-  . "FROM\n"
-  . "    nhan_vien, chi_nhanh\n"
-  . "WHERE\n"
-  . "    nhan_vien.ma_chi_nhanh = chi_nhanh.ma\n"
-  . "ORDER BY\n"
-  . "    chi_nhanh.ma;\n";
 
+$query = "SELECT "
+  . "    nhan_vien.ma, "
+  . "    nhan_vien.ho, "
+  . "    nhan_vien.ten, "
+  . "    nhan_vien.cccd, "
+  . "    nhan_vien.ngay_sinh, "
+  . "    nhan_vien.email, "
+  . "    nhan_vien.sdt, "
+  . "    nhan_vien.dia_chi, "
+  . "    nhan_vien.thoi_gian_bat_dau_lam, "
+  . "    nhan_vien.luong, "
+  . "    chi_nhanh.ten AS ten_chi_nhanh "
+  . "FROM "
+  . "    nhan_vien, chi_nhanh "
+  . "WHERE "
+  . "    nhan_vien.ma_chi_nhanh = chi_nhanh.ma "
+  . "ORDER BY "
+  . "    chi_nhanh.ma; ";
 $result = $conn->query($query);
 if ($result->num_rows > 0) {
   $col = 1;
