@@ -88,13 +88,16 @@ $conn->close();
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"> <a class="nav-link" href="#">Trang của P</a> </li>
           <li class="nav-item"> <a class="nav-link" href="#">Trang của H</a> </li>
-          <li class="nav-item"> <a class="nav-link" href="#">Trang của T</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="dau_sach.php">Đầu sách</a> </li>
           <li class="nav-item"> <a class="nav-link" href="#">Trang của K</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
           <li class="nav-item" style="margin-right: 10px;">
-            <a href="#" class="btn btn-secondary ">Hiển thị dữ liệu với tham số</a>
+            <a href="#" class="btn btn-secondary ">Tóm tắt thông tin nhập sách theo nhà xuất bản</a>
+          </li>
+          <li class="nav-item" style="margin-right: 10px;">
+            <a href="#" class="btn btn-secondary ">Doanh thu chi nhánh</a>
           </li>
           <li class="nav-item">
             <a href="./them_nhan_vien.php" class="btn btn-primary ">Thêm nhân viên mới</a>

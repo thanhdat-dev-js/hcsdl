@@ -13,13 +13,13 @@ if (isset($_POST["btn_search"])) {
           <td scope="col">' . $row["tac_gia"] . '</td>
           <td scope="col">' . $row["the_loai"] . '</td>
           <td scope="col">' . $row["ten_nha_xuat_ban"] . '</td>
-          <td scope="col">' . $row["gia_niem_yet"] . '</td>      
+          <td scope="col">' . $row["gia_niem_yet"] . '</td>
         </tr>';
       $col++;
     }
   } else {
     $data_dau_sach = '<div class="alert alert-primary" role="alert">
-    Không tồn tại nhà xuất bản tên ' . $_POST["ten_nha_xuat_ban"] . ' 
+    Không tồn tại nhà xuất bản tên ' . $_POST["ten_nha_xuat_ban"] . '
   </div>';
   }
 }
@@ -61,7 +61,7 @@ $conn->close();
             <a class="nav-link" href="#">Trang của H</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Trang của T</a>
+            <a class="nav-link" href="nhan_vien.php">Nhân viên</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Trang của K</a>

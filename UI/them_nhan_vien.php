@@ -85,7 +85,7 @@ if (isset($_POST["btn_create"])) {
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"> <a class="nav-link" href="#">Trang của P</a> </li>
           <li class="nav-item"> <a class="nav-link" href="#">Trang của H</a> </li>
-          <li class="nav-item"> <a class="nav-link" href="#">Trang của T</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="dau_sach.php">Đầu sách</a> </li>
           <li class="nav-item"> <a class="nav-link" href="#">Trang của K</a> </li>
         </ul>
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
@@ -158,10 +158,10 @@ if (isset($_POST["btn_create"])) {
             ?>
           </select>
         </div>
-        <div class="mb-3">
+        <!-- <div class="mb-3">
           <input type="checkbox" class="" name="la_quan_ly" id="la_quan_ly" require>
           <label for="la_quan_ly" class="form-label">Là quản lý?</label>
-        </div>
+        </div> -->
         <button class="btn btn-primary" type="submit" name="btn_create">Thêm nhân viên</button>
       </div>
 

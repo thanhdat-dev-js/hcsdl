@@ -85,7 +85,7 @@ if (isset($_POST["btn_edit"])) {
             <a class="nav-link" href="#">Trang của H</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Trang của T</a>
+            <a class="nav-link" href="nhan_vien.php">Nhân viên</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Trang của K</a>
