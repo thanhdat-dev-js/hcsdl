@@ -1,13 +1,62 @@
 <?php
 include_once('init.php');
-include_once('console_log.php');
 
 $not_enough_information = false;
 $id_error = false;
 
 
+if (isset($_POST["btn_edit"])) {
+  $ma= $_POST["ma"];
+  $ho = $_POST["ho"];
+  $ten = $_POST["ten"];
+  $ngay_sinh = $_POST["ngay_sinh"];
+  $email = $_POST["email"];
+  $sdt = $_POST["sdt"];
+  $dia_chi = $_POST["dia_chi"];
+  $cccd = $_POST["cccd"];
+  $thoi_gian_bat_dau_lam = $_POST["thoi_gian_bat_dau_lam"];
+  $luong = $_POST["luong"];
+  $ma_chi_nhanh = $_POST["ma_chi_nhanh"];
+  // if ($_POST["la_quan_ly"] == "on")
+  //   $la_quan_ly = 1;
+  // else
+  //   $la_quan_ly = 0;
+
+  if (
+    empty($ten)
+    || empty($ngay_sinh)
+    || empty($email)
+    || empty($sdt)
+    || empty($cccd)
+    || empty($luong)
+    || empty($thoi_gian_bat_dau_lam)
+    || empty($ma_chi_nhanh)
+  ) {
+    $not_enough_information = true;
+  } else {
+    $query = 'UPDATE nhan_vien SET '
+      . 'ho=' . sql_string($ho) . ', '
+      . 'ten='. sql_string($ten) . ', '
+      . 'ngay_sinh=' . sql_date($ngay_sinh) . ', '
+      . 'email=' . sql_string($email) . ', '
+      . 'sdt=' . sql_string($sdt) . ', '
+      . 'dia_chi=' . sql_string($dia_chi) . ', '
+      . 'cccd=' . sql_string($cccd) . ', '
+      . 'luong=' . sql_number($luong) . ', '
+      . 'thoi_gian_bat_dau_lam='. sql_date($thoi_gian_bat_dau_lam) . ', '
+      . 'ma_chi_nhanh=' . sql_string($ma_chi_nhanh) . ' '
+      . 'WHERE ma=' . sql_string($ma) . ';';
+
+    console_log($query);
+    $result = $conn->query($query);
+    if ($result) {
+      header("Location: nhan_vien.php");
+    }
+  }
+}
+
+
 $ma = $_GET["ma"];
-console_log($ma);
 $query = "SELECT * FROM nhan_vien WHERE '$ma' = nhan_vien.ma;";
 $result = $conn->query($query);
 if ($result->num_rows > 0) {
@@ -74,6 +123,7 @@ if ($result->num_rows > 0) {
     ?>
     <form action="" method="POST">
       <div class="myform">
+        <input type="text" name="ma" value=<?php echo $nhan_vien['ma']?> hidden>
         <?php
         function make_input_form($type, $name, $label, $value, $required)
         {

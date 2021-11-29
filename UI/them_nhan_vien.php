@@ -6,7 +6,6 @@ $not_enough_information = false;
 if (isset($_POST["btn_create"])) {
   $ho = $_POST["ho"];
   $ten = $_POST["ten"];
-  $cccd = $_POST["ten"];
   $ngay_sinh = $_POST["ngay_sinh"];
   $email = $_POST["email"];
   $sdt = $_POST["sdt"];
