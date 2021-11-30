@@ -2,28 +2,30 @@
 include_once('init.php');
 $data_dau_sach = '';
 if (isset($_POST["btn_search"])) {
-  $sql_dau_sach = "CALL get_data_1('" . $_POST["ten_nha_xuat_ban"] . "');";
-  $result_dau_sach = $conn->query($sql_dau_sach);
-  if ($result_dau_sach->num_rows > 0) {
-    $col = 1;
-    while ($row = $result_dau_sach->fetch_assoc()) {
-      $data_dau_sach .= '<tr>
-          <td scope="col">' . $col . '</td>
-          <td scope="col">' . $row["ten_dau_sach"] . '</td>
-          <td scope="col">' . $row["tac_gia"] . '</td>
-          <td scope="col">' . $row["the_loai"] . '</td>
-          <td scope="col">' . $row["ten_nha_xuat_ban"] . '</td>
-          <td scope="col">' . $row["gia_niem_yet"] . '</td>
-        </tr>';
-      $col++;
-    }
-  } else {
+  if ($_POST["so_luong"] < 0) {
     $data_dau_sach = '<div class="alert alert-primary" role="alert">
-    Không tồn tại nhà xuất bản tên ' . $_POST["ten_nha_xuat_ban"] . '
+    Số lượng không được < ' . $_POST["so_luong"] . '
   </div>';
+  } else {
+    $sql_dau_sach = "CALL get_data_2('" . $_POST["so_luong"] . "');";
+    $result_dau_sach = $conn->query($sql_dau_sach);
+    if ($result_dau_sach->num_rows > 0) {
+      $col = 1;
+      while ($row = $result_dau_sach->fetch_assoc()) {
+        $data_dau_sach .= '<tr>
+            <td scope="col">' . $col . '</td>
+            <td scope="col">' . $row["ten"] . '</td>
+            <td scope="col">' . $row["COUNT(ma_nha_xuat_ban)"] . '</td>
+          </tr>';
+        $col++;
+      }
+    } else {
+      $data_dau_sach = '<div class="alert alert-primary" role="alert">
+      Không tồn tại nhà xuất bản có số đầu sách lớn hơn ' . $_POST["so_luong"] . '
+    </div>';
+    }
   }
 }
-
 
 $conn->close();
 
@@ -68,8 +70,8 @@ $conn->close();
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a href="./them_dau_sach.php" class="btn btn-primary ">Thêm đầu sách mới</a>
+          <li class="nav-item" style="margin-right: 10px;">
+            <a href="./dau_sach.php" class="btn btn-primary">Trở về trang đầu sách</a>
           </li>
         </ul>
       </div>
@@ -79,9 +81,9 @@ $conn->close();
 
   <div class="container">
     <div class="myform d-flex">
-      <h4>Tìm tất cả các đầu sách thuộc nhà xuất bản </h4>
-      <form class="d-flex" style="max-width: 500px; margin-left: auto;" method="POST" action="get_data.php">
-        <input class="form-control me-2" type="search" name="ten_nha_xuat_ban" placeholder="Nhập tên nhà xuất bản">
+      <h4>Tìm nhà xuất bản có số đầu sách lớn hơn </h4>
+      <form class="d-flex" style="max-width: 500px; margin-left: auto;" method="POST" action="get_data_2.php">
+        <input class="form-control me-2" type="number" name="so_luong" placeholder="Nhập số lượng">
         <button class="btn btn-success " style="min-width: 100px;" name="btn_search" type="submit">Tìm
           kiếm</button>
       </form>
@@ -90,11 +92,8 @@ $conn->close();
       <thead>
         <tr>
           <th scope="col">STT</th>
-          <th scope="col">Tên đầu sách</th>
-          <th scope="col">Tác giả</th>
-          <th scope="col">Thể loại</th>
           <th scope="col">Tên nhà xuất bản</th>
-          <th scope="col">Giá niêm yết</th>
+          <th scope="col">Số đầu sách</th>
         </tr>
       </thead>
       <tbody>

@@ -549,6 +549,17 @@ def fk_ap_dung_cho(ap_dung_cho, giam_gia, dau_sach):
         ap_dung_cho["ma_dau_sach"][i] = gds.next()
 
 
+def fk_thu_ngan(thu_ngan, don_hang):
+    doanh_so = {}
+    for ma in thu_ngan['ma']:
+        doanh_so[ma] = 0.0
+    for i in range(len(don_hang)):
+        doanh_so[don_hang['ma_thu_ngan'][i]] += don_hang['tong_tien'][i]
+
+    for i in range(len(thu_ngan)):
+        thu_ngan['doanh_so'][i] = doanh_so[thu_ngan['ma'][i]]
+
+
 
 
 
@@ -585,6 +596,7 @@ if __name__ == "__main__":
     fk_don_hang_online(don_hang_online, don_hang, dau_sach, thanh_vien, bao_gom_online)
     fk_voucher(voucher, giam_gia, giam_gia_van_chuyen, thanh_vien, don_hang)
     fk_ap_dung_cho(ap_dung_cho, giam_gia, dau_sach)
+    fk_thu_ngan(thu_ngan, don_hang)
 
 
     commands = dumps_sql_insert_commands(chi_nhanh, "chi_nhanh")
