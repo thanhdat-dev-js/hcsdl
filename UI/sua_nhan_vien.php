@@ -47,7 +47,6 @@ if (isset($_POST["btn_edit"])) {
       . 'ma_chi_nhanh=' . sql_string($ma_chi_nhanh) . ' '
       . 'WHERE ma=' . sql_string($ma) . ';';
 
-    console_log($query);
     $result = $conn->query($query);
     if ($result) {
       header("Location: nhan_vien.php");
