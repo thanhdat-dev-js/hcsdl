@@ -44,7 +44,6 @@ if (isset($_POST["btn_create"])) {
       . sql_string($ma_chi_nhanh) . ', '
       . sql_number($la_quan_ly) . ');';
 
-    console_log($query);
     $result = $conn->query($query);
     if ($result) {
       header("Location: nhan_vien.php");
