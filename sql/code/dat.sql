@@ -56,6 +56,27 @@ END $$
 DELIMITER ;
 
 
+ DELIMITER
+    $$
+CREATE DEFINER = `root`@`localhost` PROCEDURE `get_data_1`(
+    IN `ten_nha_xuat_ban` VARCHAR(50)
+)
+BEGIN
+    SELECT
+        dau_sach.ten AS ten_dau_sach,
+        tac_gia,
+        the_loai,
+        nha_xuat_ban.ten AS ten_nha_xuat_ban,
+        gia_niem_yet
+    FROM
+        dau_sach,
+        nha_xuat_ban
+    WHERE
+        dau_sach.ma_nha_xuat_ban = nha_xuat_ban.ma AND nha_xuat_ban.ten = ten_nha_xuat_ban
+    ORDER BY
+        gia_niem_yet ; END $$
+    DELIMITER
+        ;
 
 DELIMITER $$
 CREATE DEFINER = `root`@`localhost`
