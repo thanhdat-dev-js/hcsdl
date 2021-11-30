@@ -152,217 +152,217 @@ CREATE TABLE ap_dung_cho (
 
 
 
-INSERT INTO chi_nhanh(ma, ten, email, dia_chi) VALUES("CNH000000000", "Cơ Sở 1", "lienhe@sahafake.coso1.com", "Đường Số 2, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh, Vietnam");
-INSERT INTO chi_nhanh(ma, ten, email, dia_chi) VALUES("CNH000000001", "Cơ Sở 2", "lienhe@sahafake.coso2.com", "14A Số 12, Khu Phố 4, Quận 9, Thành phố Hồ Chí Minh 700000, Vietnam");
-INSERT INTO sdt_chi_nhanh(ma_chi_nhanh, sdt) VALUES("CNH000000001", "0989000000");
-INSERT INTO sdt_chi_nhanh(ma_chi_nhanh, sdt) VALUES("CNH000000000", "0989000001");
-INSERT INTO sdt_chi_nhanh(ma_chi_nhanh, sdt) VALUES("CNH000000001", "0989000002");
-INSERT INTO sdt_chi_nhanh(ma_chi_nhanh, sdt) VALUES("CNH000000000", "0989000003");
+INSERT INTO chi_nhanh(ma, ten, email, dia_chi) VALUES("CNH000000000", "Cơ Sở 1", "lienhe@sahafake.coso1.com", "43 Đường Số 245, khu phố 5, Quận 9, Thành phố Hồ Chí Minh 700000, Vietnam");
+INSERT INTO chi_nhanh(ma, ten, email, dia_chi) VALUES("CNH000000001", "Cơ Sở 2", "lienhe@sahafake.coso2.com", "7/11A,Đường 182,Phường Tăng Nhơn Phú A,Quận 9,Tp, Thành phố Hồ Chí Minh 70000, Vietnam");
+INSERT INTO sdt_chi_nhanh(ma_chi_nhanh, sdt) VALUES("CNH000000000", "0989000000");
+INSERT INTO sdt_chi_nhanh(ma_chi_nhanh, sdt) VALUES("CNH000000001", "0989000001");
+INSERT INTO sdt_chi_nhanh(ma_chi_nhanh, sdt) VALUES("CNH000000000", "0989000002");
+INSERT INTO sdt_chi_nhanh(ma_chi_nhanh, sdt) VALUES("CNH000000001", "0989000003");
 INSERT INTO sdt_chi_nhanh(ma_chi_nhanh, sdt) VALUES("CNH000000000", "0989000004");
-INSERT INTO nhan_vien(ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly) VALUES("NVI000000000", "Đỗ Thanh", "Trữ", STR_TO_DATE("20-7-1986", "%d-%m-%Y"), "do.thanh.tru.1579@sahafake.com", "0989000005", "179 Đ. Lê Văn Việt, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh, Vietnam", "070802000000", 13260000, STR_TO_DATE("27-7-2015", "%d-%m-%Y"), "CNH000000000", "NVI000000008");
-INSERT INTO nhan_vien(ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly) VALUES("NVI000000001", "Hoàng", "Thì", STR_TO_DATE("9-10-1989", "%d-%m-%Y"), "hoang.thi.1580@sahafake.com", "0989000006", "72 Đ. Lê Văn Việt, Phường Tân Phú, Quận 9, Thành phố Hồ Chí Minh, Vietnam", "070802000001", 13260000, STR_TO_DATE("7-2-2015", "%d-%m-%Y"), "CNH000000001", "NVI000000002");
-INSERT INTO nhan_vien(ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly) VALUES("NVI000000002", "Nguyễn Gia", "Buông", STR_TO_DATE("21-4-1982", "%d-%m-%Y"), "nguyen.gia.buong.1581@sahafake.com", "0989000007", "Lot I-5C Saigon Hi-Tech Park, Quận 9, Thành phố Hồ Chí Minh, Vietnam", "070802000002", 13260000, STR_TO_DATE("21-10-2021", "%d-%m-%Y"), "CNH000000001", "NVI000000002");
-INSERT INTO nhan_vien(ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly) VALUES("NVI000000003", "Đặng Anh", "Ðam", STR_TO_DATE("3-8-1992", "%d-%m-%Y"), "dang.anh.ðam.1582@sahafake.com", "0989000008", "RQQW+HJX, Tăng Nhơn Phú A, Quận 9, Quận 9 Hồ Chí Minh, Vietnam", "070802000003", 17680000, STR_TO_DATE("20-4-2010", "%d-%m-%Y"), "CNH000000000", "NVI000000008");
-INSERT INTO nhan_vien(ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly) VALUES("NVI000000004", "Huỳnh Anh", "Hằng", STR_TO_DATE("10-6-1999", "%d-%m-%Y"), "huynh.anh.hang.1583@sahafake.com", "0989000009", "Khu Công Nghệ Cao, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh, Vietnam", "070802000004", 8840000, STR_TO_DATE("16-2-2018", "%d-%m-%Y"), "CNH000000001", "NVI000000002");
-INSERT INTO nhan_vien(ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly) VALUES("NVI000000005", "Phạm", "Ðậu", STR_TO_DATE("17-6-1985", "%d-%m-%Y"), "pham.ðau.1584@sahafake.com", "0989000010", "43 Đường Số 245, khu phố 5, Quận 9, Thành phố Hồ Chí Minh 700000, Vietnam", "070802000005", 4420000, STR_TO_DATE("4-2-2021", "%d-%m-%Y"), "CNH000000000", "NVI000000008");
-INSERT INTO nhan_vien(ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly) VALUES("NVI000000006", "Dương", "Hữu", STR_TO_DATE("29-7-1991", "%d-%m-%Y"), "duong.huu.1585@sahafake.com", "0989000011", "20/1/3 Đường Số 295, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh 700000, Vietnam", "070802000006", 4420000, STR_TO_DATE("30-6-2019", "%d-%m-%Y"), "CNH000000001", "NVI000000002");
-INSERT INTO nhan_vien(ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly) VALUES("NVI000000007", "Vũ Thanh", "Bôi", STR_TO_DATE("22-11-1982", "%d-%m-%Y"), "vu.thanh.boi.1586@sahafake.com", "0989000012", "1 Đường Số 2, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh, Vietnam", "070802000007", 13260000, STR_TO_DATE("16-11-2014", "%d-%m-%Y"), "CNH000000000", "NVI000000008");
-INSERT INTO nhan_vien(ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly) VALUES("NVI000000008", "Lý Thanh", "Trước", STR_TO_DATE("11-2-1996", "%d-%m-%Y"), "ly.thanh.truoc.1587@sahafake.com", "0989000013", "Đường Số 2, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh, Vietnam", "070802000008", 17680000, STR_TO_DATE("22-5-2021", "%d-%m-%Y"), "CNH000000000", "NVI000000008");
-INSERT INTO nhan_vien(ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly) VALUES("NVI000000009", "Dương Thanh", "Ðôn", STR_TO_DATE("14-4-1985", "%d-%m-%Y"), "duong.thanh.ðon.1588@sahafake.com", "0989000014", "262 Hoàng Hữu Nam, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh 700000, Vietnam", "070802000009", 4420000, STR_TO_DATE("20-2-2020", "%d-%m-%Y"), "CNH000000001", "NVI000000002");
-INSERT INTO thu_ngan(ma, ma_quay, doanh_so) VALUES("NVI000000001", "QUA000000000", 11201000);
-INSERT INTO thu_ngan(ma, ma_quay, doanh_so) VALUES("NVI000000009", "QUA000000001", 9353000);
-INSERT INTO thu_ngan(ma, ma_quay, doanh_so) VALUES("NVI000000006", "QUA000000002", 13248000);
-INSERT INTO thu_ngan(ma, ma_quay, doanh_so) VALUES("NVI000000007", "QUA000000003", 12381000);
-INSERT INTO thu_ngan(ma, ma_quay, doanh_so) VALUES("NVI000000000", "QUA000000004", 5692000);
-INSERT INTO thu_ngan(ma, ma_quay, doanh_so) VALUES("NVI000000005", "QUA000000005", 4079000);
+INSERT INTO nhan_vien(ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly) VALUES("NVI000000000", "Hồ Gia", "Kỷ", STR_TO_DATE("17-8-1993", "%d-%m-%Y"), "ho.gia.ky.6128@sahafake.com", "0989000005", "1 Đường Số 2, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh, Vietnam", "070802000000", 8840000, STR_TO_DATE("6-6-2018", "%d-%m-%Y"), "CNH000000001", "NVI000000004");
+INSERT INTO nhan_vien(ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly) VALUES("NVI000000001", "Võ", "Khảng", STR_TO_DATE("16-4-1999", "%d-%m-%Y"), "vo.khang.6129@sahafake.com", "0989000006", "179 Đ. Lê Văn Việt, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh, Vietnam", "070802000001", 13260000, STR_TO_DATE("12-1-2014", "%d-%m-%Y"), "CNH000000000", "NVI000000008");
+INSERT INTO nhan_vien(ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly) VALUES("NVI000000002", "Lý Thanh", "Thắng", STR_TO_DATE("3-9-1983", "%d-%m-%Y"), "ly.thanh.thang.6130@sahafake.com", "0989000007", "4 Số 12, Tăng Nhơn Phú A, Quận 9, Thành phố Hồ Chí Minh, Vietnam", "070802000002", 8840000, STR_TO_DATE("12-2-2016", "%d-%m-%Y"), "CNH000000000", "NVI000000008");
+INSERT INTO nhan_vien(ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly) VALUES("NVI000000003", "Lý Thanh", "Trứ", STR_TO_DATE("30-11-1985", "%d-%m-%Y"), "ly.thanh.tru.6131@sahafake.com", "0989000008", "15D Số 12, Tăng Nhơn Phú A, Quận 9, Thành phố Hồ Chí Minh, Vietnam", "070802000003", 8840000, STR_TO_DATE("13-10-2017", "%d-%m-%Y"), "CNH000000001", "NVI000000004");
+INSERT INTO nhan_vien(ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly) VALUES("NVI000000004", "Hoàng", "Bốn", STR_TO_DATE("23-9-1985", "%d-%m-%Y"), "hoang.bon.6132@sahafake.com", "0989000009", "Lô I5-3a, 3b, Khu Công Nghệ Cao, Tăng Nhơn Phú A, Thành Phố Thủ Đức, Thành phố Hồ Chí Minh, Vietnam", "070802000004", 17680000, STR_TO_DATE("19-10-2015", "%d-%m-%Y"), "CNH000000001", "NVI000000004");
+INSERT INTO nhan_vien(ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly) VALUES("NVI000000005", "Bùi", "Hào", STR_TO_DATE("15-7-1981", "%d-%m-%Y"), "bui.hao.6133@sahafake.com", "0989000010", "14A Số 12, Khu Phố 4, Quận 9, Thành phố Hồ Chí Minh 700000, Vietnam", "070802000005", 4420000, STR_TO_DATE("29-9-2021", "%d-%m-%Y"), "CNH000000000", "NVI000000008");
+INSERT INTO nhan_vien(ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly) VALUES("NVI000000006", "Lê Anh", "Hựu", STR_TO_DATE("7-8-1986", "%d-%m-%Y"), "le.anh.huu.6134@sahafake.com", "0989000011", "Lô I5-1, đường N7, Khu Công Nghệ Cao, Phường Tăng Nhơn Phú A, Hồ Chí Minh, Vietnam", "070802000006", 17680000, STR_TO_DATE("10-3-2012", "%d-%m-%Y"), "CNH000000001", "NVI000000004");
+INSERT INTO nhan_vien(ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly) VALUES("NVI000000007", "Hoàng Gia", "Hộ", STR_TO_DATE("18-8-1989", "%d-%m-%Y"), "hoang.gia.ho.6135@sahafake.com", "0989000012", "Lot I-5C Saigon Hi-Tech Park, Quận 9, Thành phố Hồ Chí Minh, Vietnam", "070802000007", 8840000, STR_TO_DATE("30-10-2016", "%d-%m-%Y"), "CNH000000001", "NVI000000004");
+INSERT INTO nhan_vien(ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly) VALUES("NVI000000008", "Lý Thanh", "Ðược", STR_TO_DATE("21-9-1998", "%d-%m-%Y"), "ly.thanh.ðuoc.6136@sahafake.com", "0989000013", "Đường Số 2, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh, Vietnam", "070802000008", 17680000, STR_TO_DATE("19-2-2021", "%d-%m-%Y"), "CNH000000000", "NVI000000008");
+INSERT INTO nhan_vien(ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly) VALUES("NVI000000009", "Huỳnh", "Tiết", STR_TO_DATE("22-8-1981", "%d-%m-%Y"), "huynh.tiet.6137@sahafake.com", "0989000014", "Khu Công Nghệ Cao, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh, Vietnam", "070802000009", 17680000, STR_TO_DATE("10-6-2010", "%d-%m-%Y"), "CNH000000000", "NVI000000008");
+INSERT INTO thu_ngan(ma, ma_quay, doanh_so) VALUES("NVI000000005", "QUA000000000", 10640000);
+INSERT INTO thu_ngan(ma, ma_quay, doanh_so) VALUES("NVI000000002", "QUA000000001", 6821000);
+INSERT INTO thu_ngan(ma, ma_quay, doanh_so) VALUES("NVI000000006", "QUA000000002", 9881000);
+INSERT INTO thu_ngan(ma, ma_quay, doanh_so) VALUES("NVI000000000", "QUA000000003", 2875000);
+INSERT INTO thu_ngan(ma, ma_quay, doanh_so) VALUES("NVI000000001", "QUA000000004", 5710000);
+INSERT INTO thu_ngan(ma, ma_quay, doanh_so) VALUES("NVI000000003", "QUA000000005", 2990000);
 INSERT INTO quan_ly(ma, ma_chi_nhanh) VALUES("NVI000000008", "CNH000000000");
-INSERT INTO quan_ly(ma, ma_chi_nhanh) VALUES("NVI000000002", "CNH000000001");
-INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000000", STR_TO_DATE("11-6-2020", "%d-%m-%Y"), 1, 2863000, "NVI000000009", null, "NVI000000002");
-INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000001", STR_TO_DATE("17-5-2021", "%d-%m-%Y"), 1, 2778000, "NVI000000007", null, "NVI000000008");
-INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000002", STR_TO_DATE("1-6-2020", "%d-%m-%Y"), 2, 2610000, "NVI000000006", null, "NVI000000002");
-INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000003", STR_TO_DATE("13-11-2020", "%d-%m-%Y"), 2, 794000, "NVI000000000", "070802000011", "NVI000000008");
-INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000004", STR_TO_DATE("23-3-2021", "%d-%m-%Y"), 1, 2863000, "NVI000000005", "070802000012", "NVI000000008");
-INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000005", STR_TO_DATE("12-11-2020", "%d-%m-%Y"), 1, 2687000, "NVI000000001", null, "NVI000000002");
-INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000006", STR_TO_DATE("3-3-2020", "%d-%m-%Y"), 2, 4345000, "NVI000000001", "070802000010", "NVI000000002");
-INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000007", STR_TO_DATE("29-8-2021", "%d-%m-%Y"), 2, 3239000, "NVI000000006", null, "NVI000000002");
-INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000008", STR_TO_DATE("24-7-2021", "%d-%m-%Y"), 2, 5726000, "NVI000000009", null, "NVI000000002");
-INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000009", STR_TO_DATE("9-11-2020", "%d-%m-%Y"), 2, 2964000, "NVI000000000", null, "NVI000000008");
-INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000010", STR_TO_DATE("24-2-2021", "%d-%m-%Y"), 1, 608000, "NVI000000005", null, "NVI000000008");
-INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000011", STR_TO_DATE("16-5-2021", "%d-%m-%Y"), 2, 4169000, "NVI000000007", "070802000011", "NVI000000008");
-INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000012", STR_TO_DATE("16-11-2021", "%d-%m-%Y"), 2, 4621000, "NVI000000006", null, "NVI000000002");
-INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000013", STR_TO_DATE("30-6-2021", "%d-%m-%Y"), 1, 1934000, "NVI000000000", null, "NVI000000008");
-INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000014", STR_TO_DATE("13-1-2021", "%d-%m-%Y"), 1, 608000, "NVI000000005", null, "NVI000000008");
-INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000015", STR_TO_DATE("13-4-2020", "%d-%m-%Y"), 2, 4169000, "NVI000000001", null, "NVI000000002");
-INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000016", STR_TO_DATE("24-1-2021", "%d-%m-%Y"), 1, 764000, "NVI000000009", null, "NVI000000002");
-INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000017", STR_TO_DATE("23-12-2020", "%d-%m-%Y"), 1, 2048000, "NVI000000007", "070802000010", "NVI000000008");
-INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000018", STR_TO_DATE("27-4-2020", "%d-%m-%Y"), 2, 3386000, "NVI000000007", null, "NVI000000008");
-INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000019", STR_TO_DATE("22-2-2021", "%d-%m-%Y"), 1, 2778000, "NVI000000006", null, "NVI000000002");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000000", "QSA000000067");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000015", "QSA000000057");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000001", "QSA000000032");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000003", "QSA000000081");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000019", "QSA000000064");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000012", "QSA000000051");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000018", "QSA000000011");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000005", "QSA000000020");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000006", "QSA000000006");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000013", "QSA000000050");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000008", "QSA000000012");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000014", "QSA000000039");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000002", "QSA000000043");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000017", "QSA000000099");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000007", "QSA000000069");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000016", "QSA000000049");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000009", "QSA000000038");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000011", "QSA000000083");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000010", "QSA000000041");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000004", "QSA000000052");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000002", "QSA000000082");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000007", "QSA000000090");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000012", "QSA000000000");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000011", "QSA000000087");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000003", "QSA000000027");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000015", "QSA000000035");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000009", "QSA000000076");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000008", "QSA000000044");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000018", "QSA000000094");
-INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000006", "QSA000000086");
-INSERT INTO don_hang_online(ma, ngay_dat, so_luong, tong_tien, ma_thanh_vien, ma_don_offline) VALUES("DHO000000000", STR_TO_DATE("17-4-2020", "%d-%m-%Y"), 14, 7760000, "070802000010", null);
-INSERT INTO don_hang_online(ma, ngay_dat, so_luong, tong_tien, ma_thanh_vien, ma_don_offline) VALUES("DHO000000001", STR_TO_DATE("4-2-2020", "%d-%m-%Y"), 13, 29884000, "070802000012", null);
-INSERT INTO don_hang_online(ma, ngay_dat, so_luong, tong_tien, ma_thanh_vien, ma_don_offline) VALUES("DHO000000002", STR_TO_DATE("28-12-2020", "%d-%m-%Y"), 4, 11112000, "070802000011", null);
-INSERT INTO don_hang_online(ma, ngay_dat, so_luong, tong_tien, ma_thanh_vien, ma_don_offline) VALUES("DHO000000003", STR_TO_DATE("12-3-2021", "%d-%m-%Y"), 7, 10374000, "070802000012", null);
-INSERT INTO don_hang_online(ma, ngay_dat, so_luong, tong_tien, ma_thanh_vien, ma_don_offline) VALUES("DHO000000004", STR_TO_DATE("1-6-2020", "%d-%m-%Y"), 10, 19340000, "070802000010", null);
-INSERT INTO bao_gom_online(ma_don, ma_dau_sach, so_luong) VALUES("DHO000000000", "DSA000000007", 8);
-INSERT INTO bao_gom_online(ma_don, ma_dau_sach, so_luong) VALUES("DHO000000004", "DSA000000006", 10);
-INSERT INTO bao_gom_online(ma_don, ma_dau_sach, so_luong) VALUES("DHO000000003", "DSA000000000", 7);
-INSERT INTO bao_gom_online(ma_don, ma_dau_sach, so_luong) VALUES("DHO000000002", "DSA000000003", 4);
-INSERT INTO bao_gom_online(ma_don, ma_dau_sach, so_luong) VALUES("DHO000000001", "DSA000000005", 9);
-INSERT INTO bao_gom_online(ma_don, ma_dau_sach, so_luong) VALUES("DHO000000001", "DSA000000002", 4);
-INSERT INTO bao_gom_online(ma_don, ma_dau_sach, so_luong) VALUES("DHO000000000", "DSA000000001", 6);
-INSERT INTO thanh_vien(cccd, ho, ten, email, sdt, dia_chi) VALUES("070802000010", "Trần Anh", "Lăng", "tran.anh.lang.1589@gmail.com", "0989000015", "12/86C Đ. Lê Văn Việt, Phường Tân Phú, Quận 9, Thành phố Hồ Chí Minh, Vietnam");
-INSERT INTO thanh_vien(cccd, ho, ten, email, sdt, dia_chi) VALUES("070802000011", "Dương", "Thạnh", "duong.thanh.1590@gmail.com", "0989000016", "VR79+87H, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh, Vietnam");
-INSERT INTO thanh_vien(cccd, ho, ten, email, sdt, dia_chi) VALUES("070802000012", "Dương Anh", "Vịnh", "duong.anh.vinh.1591@gmail.com", "0989000017", "7/11A,Đường 182,Phường Tăng Nhơn Phú A,Quận 9,Tp, Thành phố Hồ Chí Minh 70000, Vietnam");
-INSERT INTO dau_sach(ma, ten, tac_gia, the_loai, gia_nhap, gia_niem_yet, so_luong, ma_nha_xuat_ban) VALUES("DSA000000000", "Ngệ thuật làm tiền", "Phan Anh Tế", "kỹ năng", 1333000, 1482000, 10, "NXB000000000");
-INSERT INTO dau_sach(ma, ten, tac_gia, the_loai, gia_nhap, gia_niem_yet, so_luong, ma_nha_xuat_ban) VALUES("DSA000000001", "Chúa và con người", "Lý Thanh Niêm", "kiến thức", 687000, 764000, 10, "NXB000000001");
-INSERT INTO dau_sach(ma, ten, tac_gia, the_loai, gia_nhap, gia_niem_yet, so_luong, ma_nha_xuat_ban) VALUES("DSA000000002", "Những con số thay đổi thế giới", "Dương Thanh Khuyến", "kiến thức", 2576000, 2863000, 10, "NXB000000001");
-INSERT INTO dau_sach(ma, ten, tac_gia, the_loai, gia_nhap, gia_niem_yet, so_luong, ma_nha_xuat_ban) VALUES("DSA000000003", "Vãn tình", "Võ Anh Hanh", "truyện", 2500000, 2778000, 10, "NXB000000000");
-INSERT INTO dau_sach(ma, ten, tac_gia, the_loai, gia_nhap, gia_niem_yet, so_luong, ma_nha_xuat_ban) VALUES("DSA000000004", "Kế toán quản trị cho các doanh nghiệp", "Nguyễn Trứ", "kỹ năng", 547000, 608000, 10, "NXB000000000");
-INSERT INTO dau_sach(ma, ten, tac_gia, the_loai, gia_nhap, gia_niem_yet, so_luong, ma_nha_xuat_ban) VALUES("DSA000000005", "Giết chết con chim sẽ", "Dương Thanh Gia", "truyện", 1843000, 2048000, 10, "NXB000000001");
-INSERT INTO dau_sach(ma, ten, tac_gia, the_loai, gia_nhap, gia_niem_yet, so_luong, ma_nha_xuat_ban) VALUES("DSA000000006", "Nghệ thuật đầu tư", "Lê Anh Thụ", "kỹ năng", 1740000, 1934000, 10, "NXB000000000");
-INSERT INTO dau_sach(ma, ten, tac_gia, the_loai, gia_nhap, gia_niem_yet, so_luong, ma_nha_xuat_ban) VALUES("DSA000000007", "Hắc dạ hành", "Phạm Anh Quyến", "đạo giáo", 357000, 397000, 10, "NXB000000001");
-INSERT INTO dau_sach(ma, ten, tac_gia, the_loai, gia_nhap, gia_niem_yet, so_luong, ma_nha_xuat_ban) VALUES("DSA000000008", "Mẹ giàu mẹ nghèo", "Nguyễn Gia Bạt", "kỹ năng", 2418000, 2687000, 10, "NXB000000000");
-INSERT INTO dau_sach(ma, ten, tac_gia, the_loai, gia_nhap, gia_niem_yet, so_luong, ma_nha_xuat_ban) VALUES("DSA000000009", "Bá tước Ca-lốt", "Huỳnh Gia Trí", "truyện", 1174000, 1305000, 10, "NXB000000001");
+INSERT INTO quan_ly(ma, ma_chi_nhanh) VALUES("NVI000000004", "CNH000000001");
+INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000000", STR_TO_DATE("15-11-2020", "%d-%m-%Y"), 2, 4161000, "NVI000000005", null, "NVI000000008");
+INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000001", STR_TO_DATE("7-4-2021", "%d-%m-%Y"), 1, 273000, "NVI000000003", "070802000011", "NVI000000004");
+INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000002", STR_TO_DATE("10-7-2020", "%d-%m-%Y"), 1, 1222000, "NVI000000000", "070802000012", "NVI000000004");
+INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000003", STR_TO_DATE("18-7-2021", "%d-%m-%Y"), 1, 158000, "NVI000000001", null, "NVI000000008");
+INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000004", STR_TO_DATE("12-9-2021", "%d-%m-%Y"), 1, 2121000, "NVI000000006", null, "NVI000000004");
+INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000005", STR_TO_DATE("22-11-2021", "%d-%m-%Y"), 2, 2804000, "NVI000000002", null, "NVI000000008");
+INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000006", STR_TO_DATE("23-11-2020", "%d-%m-%Y"), 2, 956000, "NVI000000001", null, "NVI000000008");
+INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000007", STR_TO_DATE("21-4-2020", "%d-%m-%Y"), 2, 431000, "NVI000000000", null, "NVI000000004");
+INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000008", STR_TO_DATE("4-1-2021", "%d-%m-%Y"), 1, 265000, "NVI000000003", "070802000010", "NVI000000004");
+INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000009", STR_TO_DATE("6-10-2021", "%d-%m-%Y"), 1, 1043000, "NVI000000002", null, "NVI000000008");
+INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000010", STR_TO_DATE("18-4-2021", "%d-%m-%Y"), 1, 2701000, "NVI000000005", null, "NVI000000008");
+INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000011", STR_TO_DATE("8-8-2021", "%d-%m-%Y"), 2, 4596000, "NVI000000006", null, "NVI000000004");
+INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000012", STR_TO_DATE("8-8-2020", "%d-%m-%Y"), 2, 1922000, "NVI000000003", null, "NVI000000004");
+INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000013", STR_TO_DATE("24-1-2021", "%d-%m-%Y"), 1, 1222000, "NVI000000000", null, "NVI000000004");
+INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000014", STR_TO_DATE("27-3-2020", "%d-%m-%Y"), 1, 1657000, "NVI000000005", null, "NVI000000008");
+INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000015", STR_TO_DATE("13-2-2021", "%d-%m-%Y"), 2, 3164000, "NVI000000006", "070802000012", "NVI000000004");
+INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000016", STR_TO_DATE("1-6-2020", "%d-%m-%Y"), 2, 4596000, "NVI000000001", null, "NVI000000008");
+INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000017", STR_TO_DATE("21-10-2021", "%d-%m-%Y"), 2, 2974000, "NVI000000002", "070802000011", "NVI000000008");
+INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000018", STR_TO_DATE("23-1-2021", "%d-%m-%Y"), 2, 530000, "NVI000000003", null, "NVI000000004");
+INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly) VALUES("DHA000000019", STR_TO_DATE("10-5-2020", "%d-%m-%Y"), 1, 2121000, "NVI000000005", null, "NVI000000008");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000019", "QSA000000013");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000015", "QSA000000077");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000010", "QSA000000073");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000014", "QSA000000091");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000009", "QSA000000046");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000001", "QSA000000086");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000006", "QSA000000079");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000002", "QSA000000080");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000017", "QSA000000022");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000016", "QSA000000058");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000012", "QSA000000017");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000013", "QSA000000064");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000005", "QSA000000034");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000004", "QSA000000036");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000000", "QSA000000026");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000003", "QSA000000096");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000007", "QSA000000021");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000011", "QSA000000047");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000008", "QSA000000093");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000018", "QSA000000055");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000000", "QSA000000041");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000005", "QSA000000097");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000007", "QSA000000004");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000018", "QSA000000031");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000012", "QSA000000062");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000016", "QSA000000053");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000006", "QSA000000085");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000015", "QSA000000094");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000017", "QSA000000051");
+INSERT INTO bao_gom(ma_don, ma_quyen_sach) VALUES("DHA000000011", "QSA000000076");
+INSERT INTO don_hang_online(ma, ngay_dat, so_luong, tong_tien, ma_thanh_vien, ma_don_offline) VALUES("DHO000000000", STR_TO_DATE("29-6-2020", "%d-%m-%Y"), 5, 7927000, "070802000012", null);
+INSERT INTO don_hang_online(ma, ngay_dat, so_luong, tong_tien, ma_thanh_vien, ma_don_offline) VALUES("DHO000000001", STR_TO_DATE("21-11-2021", "%d-%m-%Y"), 7, 1855000, "070802000011", null);
+INSERT INTO don_hang_online(ma, ngay_dat, so_luong, tong_tien, ma_thanh_vien, ma_don_offline) VALUES("DHO000000002", STR_TO_DATE("25-9-2021", "%d-%m-%Y"), 6, 7332000, "070802000010", null);
+INSERT INTO don_hang_online(ma, ngay_dat, so_luong, tong_tien, ma_thanh_vien, ma_don_offline) VALUES("DHO000000003", STR_TO_DATE("10-2-2020", "%d-%m-%Y"), 18, 40266000, "070802000010", null);
+INSERT INTO don_hang_online(ma, ngay_dat, so_luong, tong_tien, ma_thanh_vien, ma_don_offline) VALUES("DHO000000004", STR_TO_DATE("2-6-2021", "%d-%m-%Y"), 4, 8484000, "070802000012", null);
+INSERT INTO bao_gom_online(ma_don, ma_dau_sach, so_luong) VALUES("DHO000000000", "DSA000000006", 2);
+INSERT INTO bao_gom_online(ma_don, ma_dau_sach, so_luong) VALUES("DHO000000003", "DSA000000003", 8);
+INSERT INTO bao_gom_online(ma_don, ma_dau_sach, so_luong) VALUES("DHO000000001", "DSA000000005", 7);
+INSERT INTO bao_gom_online(ma_don, ma_dau_sach, so_luong) VALUES("DHO000000002", "DSA000000008", 6);
+INSERT INTO bao_gom_online(ma_don, ma_dau_sach, so_luong) VALUES("DHO000000004", "DSA000000004", 4);
+INSERT INTO bao_gom_online(ma_don, ma_dau_sach, so_luong) VALUES("DHO000000000", "DSA000000000", 3);
+INSERT INTO bao_gom_online(ma_don, ma_dau_sach, so_luong) VALUES("DHO000000003", "DSA000000007", 10);
+INSERT INTO thanh_vien(cccd, ho, ten, email, sdt, dia_chi) VALUES("070802000010", "Trần Thanh", "Hanh", "tran.thanh.hanh.6138@gmail.com", "0989000015", "12/86C Đ. Lê Văn Việt, Phường Tân Phú, Quận 9, Thành phố Hồ Chí Minh, Vietnam");
+INSERT INTO thanh_vien(cccd, ho, ten, email, sdt, dia_chi) VALUES("070802000011", "Nguyễn Gia", "Luận", "nguyen.gia.luan.6139@gmail.com", "0989000016", "VR79+87H, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh, Vietnam");
+INSERT INTO thanh_vien(cccd, ho, ten, email, sdt, dia_chi) VALUES("070802000012", "Lê", "Cử", "le.cu.6140@gmail.com", "0989000017", "RQQW+HJX, Tăng Nhơn Phú A, Quận 9, Quận 9 Hồ Chí Minh, Vietnam");
+INSERT INTO dau_sach(ma, ten, tac_gia, the_loai, gia_nhap, gia_niem_yet, so_luong, ma_nha_xuat_ban) VALUES("DSA000000000", "Những người vui sướng", "Trần Thanh Nhu", "truyện", 614000, 683000, 10, "NXB000000000");
+INSERT INTO dau_sach(ma, ten, tac_gia, the_loai, gia_nhap, gia_niem_yet, so_luong, ma_nha_xuat_ban) VALUES("DSA000000001", "Chinh phục IELTS", "Vũ Gia Doãn", "giáo dục", 938000, 1043000, 10, "NXB000000001");
+INSERT INTO dau_sach(ma, ten, tac_gia, the_loai, gia_nhap, gia_niem_yet, so_luong, ma_nha_xuat_ban) VALUES("DSA000000002", "Những con người vĩ đại", "Đỗ Trân", "truyện", 142000, 158000, 10, "NXB000000000");
+INSERT INTO dau_sach(ma, ten, tac_gia, the_loai, gia_nhap, gia_niem_yet, so_luong, ma_nha_xuat_ban) VALUES("DSA000000003", "Tâm lý học đặc biệt", "Hoàng Gia Huynh", "kiến thức", 1491000, 1657000, 10, "NXB000000001");
+INSERT INTO dau_sach(ma, ten, tac_gia, the_loai, gia_nhap, gia_niem_yet, so_luong, ma_nha_xuat_ban) VALUES("DSA000000004", "Chúa và con người", "Dương Gia Diêm", "kiến thức", 1908000, 2121000, 10, "NXB000000000");
+INSERT INTO dau_sach(ma, ten, tac_gia, the_loai, gia_nhap, gia_niem_yet, so_luong, ma_nha_xuat_ban) VALUES("DSA000000005", "WWW 2021", "Nguyễn Quyết", "kiến thức", 238000, 265000, 10, "NXB000000001");
+INSERT INTO dau_sach(ma, ten, tac_gia, the_loai, gia_nhap, gia_niem_yet, so_luong, ma_nha_xuat_ban) VALUES("DSA000000006", "Giao tiếp tiếng Nhật", "Ngô Anh Nghi", "giáo dục", 2645000, 2939000, 10, "NXB000000001");
+INSERT INTO dau_sach(ma, ten, tac_gia, the_loai, gia_nhap, gia_niem_yet, so_luong, ma_nha_xuat_ban) VALUES("DSA000000007", "Nhà hóa học", "Nguyễn Anh Phàm", "truyện", 2430000, 2701000, 10, "NXB000000000");
+INSERT INTO dau_sach(ma, ten, tac_gia, the_loai, gia_nhap, gia_niem_yet, so_luong, ma_nha_xuat_ban) VALUES("DSA000000008", "Đòi nợ", "Đặng Thanh Xuân", "truyện", 1099000, 1222000, 10, "NXB000000000");
+INSERT INTO dau_sach(ma, ten, tac_gia, the_loai, gia_nhap, gia_niem_yet, so_luong, ma_nha_xuat_ban) VALUES("DSA000000009", "Nghệ thuật đầu tư", "Lý Anh Ngãi", "kỹ năng", 245000, 273000, 10, "NXB000000001");
 INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000000", "DSA000000006", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000001", "DSA000000004", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000002", "DSA000000008", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000003", "DSA000000003", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000004", "DSA000000007", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000005", "DSA000000005", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000006", "DSA000000000", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000007", "DSA000000002", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000001", "DSA000000003", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000002", "DSA000000000", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000003", "DSA000000009", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000004", "DSA000000002", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000005", "DSA000000004", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000006", "DSA000000007", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000007", "DSA000000008", "CNH000000001");
 INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000008", "DSA000000001", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000009", "DSA000000009", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000010", "DSA000000008", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000011", "DSA000000003", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000012", "DSA000000002", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000013", "DSA000000009", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000014", "DSA000000006", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000015", "DSA000000001", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000016", "DSA000000007", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000017", "DSA000000005", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000018", "DSA000000000", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000019", "DSA000000004", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000020", "DSA000000008", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000021", "DSA000000005", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000022", "DSA000000000", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000023", "DSA000000006", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000024", "DSA000000004", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000025", "DSA000000002", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000026", "DSA000000003", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000027", "DSA000000007", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000028", "DSA000000009", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000029", "DSA000000001", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000030", "DSA000000001", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000031", "DSA000000005", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000032", "DSA000000003", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000033", "DSA000000002", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000034", "DSA000000006", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000035", "DSA000000008", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000036", "DSA000000007", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000037", "DSA000000009", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000038", "DSA000000000", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000039", "DSA000000004", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000040", "DSA000000005", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000041", "DSA000000004", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000042", "DSA000000008", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000043", "DSA000000009", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000044", "DSA000000002", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000045", "DSA000000007", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000046", "DSA000000006", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000047", "DSA000000003", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000048", "DSA000000000", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000049", "DSA000000001", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000050", "DSA000000006", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000051", "DSA000000008", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000052", "DSA000000002", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000053", "DSA000000009", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000009", "DSA000000005", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000010", "DSA000000009", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000011", "DSA000000002", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000012", "DSA000000001", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000013", "DSA000000004", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000014", "DSA000000006", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000015", "DSA000000007", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000016", "DSA000000000", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000017", "DSA000000003", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000018", "DSA000000008", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000019", "DSA000000005", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000020", "DSA000000001", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000021", "DSA000000009", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000022", "DSA000000007", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000023", "DSA000000002", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000024", "DSA000000004", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000025", "DSA000000000", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000026", "DSA000000006", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000027", "DSA000000005", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000028", "DSA000000008", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000029", "DSA000000003", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000030", "DSA000000006", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000031", "DSA000000005", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000032", "DSA000000007", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000033", "DSA000000001", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000034", "DSA000000000", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000035", "DSA000000003", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000036", "DSA000000004", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000037", "DSA000000008", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000038", "DSA000000002", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000039", "DSA000000009", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000040", "DSA000000006", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000041", "DSA000000008", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000042", "DSA000000005", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000043", "DSA000000004", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000044", "DSA000000009", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000045", "DSA000000002", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000046", "DSA000000001", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000047", "DSA000000003", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000048", "DSA000000007", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000049", "DSA000000000", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000050", "DSA000000000", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000051", "DSA000000009", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000052", "DSA000000004", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000053", "DSA000000003", "CNH000000000");
 INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000054", "DSA000000001", "CNH000000000");
 INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000055", "DSA000000005", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000056", "DSA000000003", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000057", "DSA000000000", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000058", "DSA000000004", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000059", "DSA000000007", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000060", "DSA000000004", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000061", "DSA000000007", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000062", "DSA000000005", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000063", "DSA000000008", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000064", "DSA000000003", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000065", "DSA000000009", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000066", "DSA000000001", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000067", "DSA000000002", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000068", "DSA000000000", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000069", "DSA000000006", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000070", "DSA000000003", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000071", "DSA000000001", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000072", "DSA000000002", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000073", "DSA000000007", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000074", "DSA000000009", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000075", "DSA000000008", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000076", "DSA000000000", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000077", "DSA000000004", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000078", "DSA000000006", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000079", "DSA000000005", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000080", "DSA000000001", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000081", "DSA000000007", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000082", "DSA000000009", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000083", "DSA000000000", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000084", "DSA000000004", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000085", "DSA000000005", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000086", "DSA000000002", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000087", "DSA000000008", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000088", "DSA000000006", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000089", "DSA000000003", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000056", "DSA000000007", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000057", "DSA000000008", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000058", "DSA000000006", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000059", "DSA000000002", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000060", "DSA000000002", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000061", "DSA000000001", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000062", "DSA000000005", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000063", "DSA000000007", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000064", "DSA000000008", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000065", "DSA000000004", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000066", "DSA000000003", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000067", "DSA000000009", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000068", "DSA000000006", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000069", "DSA000000000", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000070", "DSA000000008", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000071", "DSA000000005", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000072", "DSA000000002", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000073", "DSA000000007", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000074", "DSA000000003", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000075", "DSA000000001", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000076", "DSA000000006", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000077", "DSA000000004", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000078", "DSA000000000", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000079", "DSA000000009", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000080", "DSA000000008", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000081", "DSA000000003", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000082", "DSA000000002", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000083", "DSA000000001", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000084", "DSA000000007", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000085", "DSA000000000", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000086", "DSA000000009", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000087", "DSA000000006", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000088", "DSA000000004", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000089", "DSA000000005", "CNH000000001");
 INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000090", "DSA000000009", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000091", "DSA000000000", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000092", "DSA000000002", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000093", "DSA000000007", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000094", "DSA000000004", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000095", "DSA000000003", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000096", "DSA000000008", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000097", "DSA000000001", "CNH000000000");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000098", "DSA000000006", "CNH000000001");
-INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000099", "DSA000000005", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000091", "DSA000000003", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000092", "DSA000000006", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000093", "DSA000000005", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000094", "DSA000000001", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000095", "DSA000000008", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000096", "DSA000000002", "CNH000000001");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000097", "DSA000000004", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000098", "DSA000000007", "CNH000000000");
+INSERT INTO quyen_sach(ma, ma_dau_sach, ma_chi_nhanh) VALUES("QSA000000099", "DSA000000000", "CNH000000001");
 INSERT INTO nha_xuat_ban(ma, ten, email, sdt, dia_chi, website) VALUES("NXB000000000", "Hồng Đức", "lienhe@hongduc.com", "0989000018", "65 Tràng Thi, Hà Nội", "www.hongduc.com");
 INSERT INTO nha_xuat_ban(ma, ten, email, sdt, dia_chi, website) VALUES("NXB000000001", "Kim đồng", "lienhe@kimdong.com", "0989000019", "55 Quang Trung, Hà Nội, Việt Nam", "www.kimdong.com");
-INSERT INTO voucher(ma, thoi_gian_bat_dau_hieu_luc, thoi_gian_het_hieu_luc, ma_don_hang, ma_thanh_vien, da_su_dung) VALUES("VOU000000000", STR_TO_DATE("25-1-2021", "%d-%m-%Y"), STR_TO_DATE("28-1-2021", "%d-%m-%Y"), null, "070802000010", False);
-INSERT INTO voucher(ma, thoi_gian_bat_dau_hieu_luc, thoi_gian_het_hieu_luc, ma_don_hang, ma_thanh_vien, da_su_dung) VALUES("VOU000000001", STR_TO_DATE("28-4-2021", "%d-%m-%Y"), STR_TO_DATE("23-11-2021", "%d-%m-%Y"), null, "070802000011", False);
-INSERT INTO voucher(ma, thoi_gian_bat_dau_hieu_luc, thoi_gian_het_hieu_luc, ma_don_hang, ma_thanh_vien, da_su_dung) VALUES("VOU000000002", STR_TO_DATE("17-2-2021", "%d-%m-%Y"), STR_TO_DATE("17-6-2021", "%d-%m-%Y"), null, "070802000012", False);
-INSERT INTO giam_gia(ma, phan_tram_giam, giam_toi_da) VALUES("VOU000000001", 0.5, 478000);
-INSERT INTO giam_gia_van_chuyen(ma, phan_tram_giam, giam_toi_da) VALUES("VOU000000000", 0.61, 60000);
-INSERT INTO giam_gia_van_chuyen(ma, phan_tram_giam, giam_toi_da) VALUES("VOU000000002", 0.5, 34000);
-INSERT INTO ap_dung_cho(ma_voucher, ma_dau_sach) VALUES("VOU000000001", "DSA000000004");
-INSERT INTO ap_dung_cho(ma_voucher, ma_dau_sach) VALUES("VOU000000001", "DSA000000007");
-INSERT INTO ap_dung_cho(ma_voucher, ma_dau_sach) VALUES("VOU000000001", "DSA000000001");
+INSERT INTO voucher(ma, thoi_gian_bat_dau_hieu_luc, thoi_gian_het_hieu_luc, ma_don_hang, ma_thanh_vien, da_su_dung) VALUES("VOU000000000", STR_TO_DATE("5-8-2021", "%d-%m-%Y"), STR_TO_DATE("20-9-2021", "%d-%m-%Y"), null, "070802000011", False);
+INSERT INTO voucher(ma, thoi_gian_bat_dau_hieu_luc, thoi_gian_het_hieu_luc, ma_don_hang, ma_thanh_vien, da_su_dung) VALUES("VOU000000001", STR_TO_DATE("24-2-2021", "%d-%m-%Y"), STR_TO_DATE("18-11-2021", "%d-%m-%Y"), null, "070802000012", False);
+INSERT INTO voucher(ma, thoi_gian_bat_dau_hieu_luc, thoi_gian_het_hieu_luc, ma_don_hang, ma_thanh_vien, da_su_dung) VALUES("VOU000000002", STR_TO_DATE("22-2-2021", "%d-%m-%Y"), STR_TO_DATE("12-5-2021", "%d-%m-%Y"), null, "070802000010", False);
+INSERT INTO giam_gia(ma, phan_tram_giam, giam_toi_da) VALUES("VOU000000002", 0.74, 989000);
+INSERT INTO giam_gia_van_chuyen(ma, phan_tram_giam, giam_toi_da) VALUES("VOU000000000", 0.74, 23000);
+INSERT INTO giam_gia_van_chuyen(ma, phan_tram_giam, giam_toi_da) VALUES("VOU000000001", 0.79, 22000);
+INSERT INTO ap_dung_cho(ma_voucher, ma_dau_sach) VALUES("VOU000000002", "DSA000000002");
+INSERT INTO ap_dung_cho(ma_voucher, ma_dau_sach) VALUES("VOU000000002", "DSA000000008");
+INSERT INTO ap_dung_cho(ma_voucher, ma_dau_sach) VALUES("VOU000000002", "DSA000000000");
 
 
 
@@ -836,9 +836,10 @@ FUNCTION `so_voucher_co_thoi_gian_hieu_luc_sau_ngay` (`ngay` DATE) RETURNS INT(1
     RETURN total;
 END$$
 DELIMITER ;
-# ============================================#
-# ========= PHAN RIENG - DUY KHANG ===========#
-# ============================================#
+
+CREATE INDEX ten_nha_xuat_ban_index ON nha_xuat_ban(ten);
+CREATE INDEX sdt_thanh_vien_index ON thanh_vien(sdt);
+CREATE INDEX ngay_tao_don_hang_index ON don_hang(ngay_tao);
 
 -- Tạo Mã đơn cho đơn hàng tiếp theo.
 
@@ -849,25 +850,25 @@ CREATE DEFINER=`root`@`localhost` FUNCTION `ma_don_moi`(
 RETURNS CHAR(12)
 BEGIN
     DECLARE loai_don CHAR(3);
-    DECLARE ma_so CHAR(9); 
-    DECLARE temp INT; 
+    DECLARE ma_so CHAR(9);
+    DECLARE temp INT;
 
     SET loai_don = LEFT(ma_don, 3);
     SET ma_so = RIGHT(ma_don, 9);
     SET temp = CAST(ma_so AS SIGNED) + 1;
     SET ma_so = LPAD(CAST(temp AS CHAR), 9, "0");
-	
+
     RETURN CONCAT(loai_don, ma_so);
 END $$
 
 DELIMITER ;
 
 
-	
+
 -- Tạo Đơn hàng Online mới.
 
 DELIMITER $$
-	
+
 CREATE PROCEDURE `tao_don_hang_online`(
 	IN `ma_thanh_vien` CHAR(12))
 BEGIN
@@ -882,7 +883,7 @@ BEGIN
 	-- Tao don hang Online moi
 	INSERT INTO don_hang_online
 	VALUES (ma_don, CURDATE(), 0, 0, ma_thanh_vien, NULL);
-	
+
 END $$
 
 DELIMITER ;
@@ -910,10 +911,10 @@ BEGIN
 			SET MESSAGE_TEXT = "Mã đầu sách không tồn tại !";
 	END IF;
 	-- Kiem tra dau sach dã co trong don hang hay chua
-	IF (SELECT COUNT(*) 
-		FROM bao_gom_online 
+	IF (SELECT COUNT(*)
+		FROM bao_gom_online
 		WHERE bao_gom_online.ma_don = ma_don AND bao_gom_online.ma_dau_sach = ma_dau_sach ) > 0 THEN
-		
+
 		SIGNAL SQLSTATE '45000'
 			SET MESSAGE_TEXT = "Đầu sách đã có trong đơn hàng !";
 	END IF;
@@ -925,7 +926,7 @@ BEGIN
 	-- Them dau sach vao don hang online.
 	INSERT INTO bao_gom_online
 	VALUES (ma_don, ma_dau_sach, so_luong);
-END $$ 
+END $$
 
 DELIMITER ;
 
@@ -954,29 +955,29 @@ BEGIN
 	DECLARE so_luong_sach INT;
 	DECLARE tong_tien_sach DECIMAL(10,2);
 	-- Tinh tong so luong sach co trong don hang online.
-	SELECT 
-		SUM(so_luong) INTO so_luong_sach 
-	FROM 
-		bao_gom_online 
-	WHERE 
+	SELECT
+		SUM(so_luong) INTO so_luong_sach
+	FROM
+		bao_gom_online
+	WHERE
 		ma_don = NEW.ma_don;
 	-- Tinh tong tien sach cua don hang online.
-	SELECT 
+	SELECT
 		SUM(bao_gom_online.so_luong * gia_niem_yet) INTO tong_tien_sach
-	FROM 
-		bao_gom_online, 
+	FROM
+		bao_gom_online,
 		dau_sach
-	WHERE 
+	WHERE
 		ma_don = NEW.ma_don AND ma_dau_sach = ma;
 	-- Cap nhat tong so luong sach, tong tien trong don hang online.
-	UPDATE 
+	UPDATE
 		don_hang_online
-	SET 
-		so_luong = so_luong_sach, 
+	SET
+		so_luong = so_luong_sach,
 		tong_tien = tong_tien_sach
-	WHERE 
-		ma = NEW.ma_don;	
-	
+	WHERE
+		ma = NEW.ma_don;
+
 END $$
 
 DELIMITER ;
@@ -996,28 +997,28 @@ BEGIN
 	DECLARE so_luong_sach INT;
 	DECLARE tong_tien_sach DECIMAL(10,2);
 	-- Tinh tong so luong sach co trong don hang online
-	SELECT 
-		SUM(so_luong) INTO so_luong_sach 
-	FROM 
-		bao_gom_online 
-	WHERE 
+	SELECT
+		SUM(so_luong) INTO so_luong_sach
+	FROM
+		bao_gom_online
+	WHERE
 		ma_don = OLD.ma_don;
 	-- Tinh tong tien sach cua don hang online
-	SELECT 
+	SELECT
 		SUM(bao_gom_online.so_luong * gia_niem_yet) INTO tong_tien_sach
-	FROM 
+	FROM
 		bao_gom_online, dau_sach
-	WHERE 
+	WHERE
 		ma_don = OLD.ma_don AND ma_dau_sach = ma;
 	-- Cap nhat tong so luong sach, tong tien trong don hang sau
-	UPDATE 
+	UPDATE
 		don_hang_online
-	SET 
-		so_luong = so_luong_sach, 
+	SET
+		so_luong = so_luong_sach,
 		tong_tien = tong_tien_sach
-	WHERE 
-		ma = OLD.ma_don;	
-	
+	WHERE
+		ma = OLD.ma_don;
+
 END $$
 
 DELIMITER ;
@@ -1029,7 +1030,7 @@ DELIMITER ;
 -- WHERE
 -- 	ma_don = "DHO000000004" AND
 -- 	ma_dau_sach = "DSA000000009";
-	
+
 
 -- Trigger: Xoá các bao_gom_online tương ứng khi xoá một Đon hàng.
 
@@ -1039,20 +1040,20 @@ CREATE TRIGGER `xoa_don_hang_online`
 BEFORE DELETE
 ON `don_hang_online` FOR EACH ROW
 BEGIN
-	DELETE FROM 
+	DELETE FROM
 		bao_gom_online
-	WHERE 
+	WHERE
 		ma_don = OLD.ma;
 END $$
 
 DELIMITER ;
 
--- DELETE FROM 
+-- DELETE FROM
 -- 	don_hang_online
 -- WHERE
 -- 	ma = "DHO000000004";
 
-	
+
 -- Thông tin các Đầu sách trong một Đơn hàng Online.
 
 DELIMITER $$
@@ -1074,7 +1075,7 @@ BEGIN
 		FORMAT(bao_gom_online.so_luong * gia_niem_yet, 0) AS tong_cong
 	FROM
 		don_hang_online,
-		bao_gom_online, 
+		bao_gom_online,
 		dau_sach
 	WHERE
 		don_hang_online.ma = ma_don_hang_online AND
@@ -1132,7 +1133,7 @@ DELIMITER ;
 
 -- Mã đầu sách không tồn tại
 -- CALL mua_dau_sach_nhieu_hon_x("DSA00000000A",2);
-	
+
 -- Số Đơn hàng Online có số lượng sách > x
 
 DELIMITER $$
@@ -1141,17 +1142,17 @@ CREATE DEFINER=`root`@`localhost` FUNCTION `don_mua_nhieu_hon_x_cuon` (
 	`SoLuong` INT)
 RETURNS INT
 BEGIN
-	DECLARE total INT DEFAULT 0; 
+	DECLARE total INT DEFAULT 0;
 	DECLARE num INT;
 	DECLARE finished INT DEFAULT 0;
 	DECLARE curSoLuong CURSOR FOR SELECT so_luong FROM don_hang_online;
 	DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = 1;
-	
+
 	IF SoLuong <= 0 THEN
 		SIGNAL SQLSTATE '45000'
 			SET MESSAGE_TEXT = "Số lượng nhập phải lớn hơn 0";
 	END IF;
-	
+
 	OPEN curSoLuong;
 	getSoLuong: LOOP
 		FETCH curSoLuong INTO num;
@@ -1160,10 +1161,10 @@ BEGIN
 		END IF;
 		IF num > SoLuong THEN
 			SET total = total + 1;
-		END IF;	
+		END IF;
 	END LOOP getSoLuong;
 	CLOSE curSoLuong;
-	
+
 	RETURN total;
 
 END $$
@@ -1190,7 +1191,7 @@ BEGIN
 	DECLARE doanh_thu_ngay_gan_nhat DECIMAL(11,2); -- Doanh thu ngay gan nhat voi ngay nhap
 	DECLARE ngay_gan_nhat DATE; 				   -- ngay gan nhat (co doanh thu)
 	DECLARE i INT; 								   -- Bien chay i
-	
+
 	SET ngay = STR_TO_DATE(ngay_nhap_vao, "%d-%m-%Y");
 	-- Kiem tra ngay nhap vao phai tu 01-01-2021
 	IF ngay < '2021-01-01' THEN
@@ -1204,13 +1205,13 @@ BEGIN
 	END IF;
 	-- Bang chua doanh thu online cua dau sach theo ngay
 	CREATE TEMPORARY TABLE doanh_thu_theo_ngay (
-		ngay_dat_dau_sach DATE, 
+		ngay_dat_dau_sach DATE,
 		doanh_thu_dau_sach DECIMAL(11,2));
 	-- Them du lieu doanh thu dau sach theo ngay vao bang
 	INSERT INTO doanh_thu_theo_ngay (ngay_dat_dau_sach, doanh_thu_dau_sach)
-	SELECT 
-		ngay_dat, 
-		SUM(bao_gom_online.so_luong * (gia_niem_yet - gia_nhap)) AS doanh_thu_sach 
+	SELECT
+		ngay_dat,
+		SUM(bao_gom_online.so_luong * (gia_niem_yet - gia_nhap)) AS doanh_thu_sach
 	FROM
 		dau_sach,
 		bao_gom_online,
@@ -1221,13 +1222,13 @@ BEGIN
 		ma_don = don_hang_online.ma
 	GROUP BY
 		ngay_dat;
-	
+
 	-- Neu trong ngay nhap vao, dau sach khong duoc dat thi doanh thu bang 0,
 	-- nguoc lai, lay doanh thu trong ngay do.
-	IF (SELECT COUNT(*) 
-		FROM doanh_thu_theo_ngay 
+	IF (SELECT COUNT(*)
+		FROM doanh_thu_theo_ngay
 		WHERE doanh_thu_theo_ngay.ngay_dat_dau_sach = ngay) = 0 THEN
-		
+
 		SET doanh_thu = 0;
 
 	ELSE
@@ -1237,18 +1238,18 @@ BEGIN
 			doanh_thu_theo_ngay
 		WHERE
 			doanh_thu_theo_ngay.ngay_dat_dau_sach = ngay;
-	END IF; 
-	
+	END IF;
+
 	-- Thuc hien loop de kiem tra ngay gan nhat co doanh thu
 	SET ngay_gan_nhat = ngay;
 	SET i = 0;
 
-	WHILE (i<365) DO 
+	WHILE (i<365) DO
 		SET ngay_gan_nhat = DATE_SUB(ngay_gan_nhat, INTERVAL 1 DAY);
-		IF (SELECT COUNT(*) 
-			FROM doanh_thu_theo_ngay 
+		IF (SELECT COUNT(*)
+			FROM doanh_thu_theo_ngay
 			WHERE doanh_thu_theo_ngay.ngay_dat_dau_sach = ngay_gan_nhat) > 0 THEN
-			
+
 			SELECT
 				doanh_thu_theo_ngay.doanh_thu_dau_sach INTO doanh_thu_ngay_gan_nhat
 			FROM
@@ -1264,7 +1265,7 @@ BEGIN
 	END WHILE;
 	-- Khong tim thay ngay gan nhat co doanh thu thi xem nhu doanh thu ngay gan nhat la 0.
 	-- Tra ve doanh thu ngay nhap vao
-	DROP TEMPORARY TABLE doanh_thu_theo_ngay; 
+	DROP TEMPORARY TABLE doanh_thu_theo_ngay;
 	RETURN doanh_thu;
 END $$
 
@@ -1288,7 +1289,7 @@ BEGIN
 			SET MESSAGE_TEXT = "Mã đầu sách không tồn tại !";
 	END IF;
 
-	SELECT 
+	SELECT
 		DATE_FORMAT(ngay_dat, '%d-%m-%Y') AS ngay,
 		SUM(bao_gom_online.so_luong) AS doanh_so_ban
 	FROM
@@ -1318,9 +1319,9 @@ DELIMITER $$
 
 CREATE DEFINER = `root`@`localhost` PROCEDURE `tong_doanh_so_ban_online`()
 BEGIN
-	SELECT 
-		DATE_FORMAT(ngay_dat, '%d-%m-%Y') AS ngay, 
-		SUM(don_hang_online.so_luong) AS tong_doanh_so_ban 
+	SELECT
+		DATE_FORMAT(ngay_dat, '%d-%m-%Y') AS ngay,
+		SUM(don_hang_online.so_luong) AS tong_doanh_so_ban
 	FROM
 		don_hang_online
 	GROUP BY
@@ -1444,7 +1445,7 @@ BEGIN
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Invalid Date Range";
     END IF;
     SELECT
-        thu_ngan.ma_quay
+        thu_ngan.ma_quay, COUNT(ma_quay)
     FROM
         thu_ngan,
         don_hang
@@ -1455,7 +1456,7 @@ BEGIN
     GROUP BY
         thu_ngan.ma_quay
     ORDER BY
-        thu_ngan.ma_quay;
+        COUNT(ma_quay);
 END $$
 DELIMITER ;
 

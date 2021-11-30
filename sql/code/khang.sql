@@ -1,8 +1,3 @@
-
-# ============================================#
-# ========= PHAN RIENG - DUY KHANG ===========#
-# ============================================#
-
 -- Tạo Mã đơn cho đơn hàng tiếp theo.
 
 DELIMITER $$
@@ -12,25 +7,25 @@ CREATE DEFINER=`root`@`localhost` FUNCTION `ma_don_moi`(
 RETURNS CHAR(12)
 BEGIN
     DECLARE loai_don CHAR(3);
-    DECLARE ma_so CHAR(9); 
-    DECLARE temp INT; 
+    DECLARE ma_so CHAR(9);
+    DECLARE temp INT;
 
     SET loai_don = LEFT(ma_don, 3);
     SET ma_so = RIGHT(ma_don, 9);
     SET temp = CAST(ma_so AS SIGNED) + 1;
     SET ma_so = LPAD(CAST(temp AS CHAR), 9, "0");
-	
+
     RETURN CONCAT(loai_don, ma_so);
 END $$
 
 DELIMITER ;
 
 
-	
+
 -- Tạo Đơn hàng Online mới.
 
 DELIMITER $$
-	
+
 CREATE PROCEDURE `tao_don_hang_online`(
 	IN `ma_thanh_vien` CHAR(12))
 BEGIN
@@ -45,7 +40,7 @@ BEGIN
 	-- Tao don hang Online moi
 	INSERT INTO don_hang_online
 	VALUES (ma_don, CURDATE(), 0, 0, ma_thanh_vien, NULL);
-	
+
 END $$
 
 DELIMITER ;
@@ -73,10 +68,10 @@ BEGIN
 			SET MESSAGE_TEXT = "Mã đầu sách không tồn tại !";
 	END IF;
 	-- Kiem tra dau sach dã co trong don hang hay chua
-	IF (SELECT COUNT(*) 
-		FROM bao_gom_online 
+	IF (SELECT COUNT(*)
+		FROM bao_gom_online
 		WHERE bao_gom_online.ma_don = ma_don AND bao_gom_online.ma_dau_sach = ma_dau_sach ) > 0 THEN
-		
+
 		SIGNAL SQLSTATE '45000'
 			SET MESSAGE_TEXT = "Đầu sách đã có trong đơn hàng !";
 	END IF;
@@ -88,7 +83,7 @@ BEGIN
 	-- Them dau sach vao don hang online.
 	INSERT INTO bao_gom_online
 	VALUES (ma_don, ma_dau_sach, so_luong);
-END $$ 
+END $$
 
 DELIMITER ;
 
@@ -117,29 +112,29 @@ BEGIN
 	DECLARE so_luong_sach INT;
 	DECLARE tong_tien_sach DECIMAL(10,2);
 	-- Tinh tong so luong sach co trong don hang online.
-	SELECT 
-		SUM(so_luong) INTO so_luong_sach 
-	FROM 
-		bao_gom_online 
-	WHERE 
+	SELECT
+		SUM(so_luong) INTO so_luong_sach
+	FROM
+		bao_gom_online
+	WHERE
 		ma_don = NEW.ma_don;
 	-- Tinh tong tien sach cua don hang online.
-	SELECT 
+	SELECT
 		SUM(bao_gom_online.so_luong * gia_niem_yet) INTO tong_tien_sach
-	FROM 
-		bao_gom_online, 
+	FROM
+		bao_gom_online,
 		dau_sach
-	WHERE 
+	WHERE
 		ma_don = NEW.ma_don AND ma_dau_sach = ma;
 	-- Cap nhat tong so luong sach, tong tien trong don hang online.
-	UPDATE 
+	UPDATE
 		don_hang_online
-	SET 
-		so_luong = so_luong_sach, 
+	SET
+		so_luong = so_luong_sach,
 		tong_tien = tong_tien_sach
-	WHERE 
-		ma = NEW.ma_don;	
-	
+	WHERE
+		ma = NEW.ma_don;
+
 END $$
 
 DELIMITER ;
@@ -159,28 +154,28 @@ BEGIN
 	DECLARE so_luong_sach INT;
 	DECLARE tong_tien_sach DECIMAL(10,2);
 	-- Tinh tong so luong sach co trong don hang online
-	SELECT 
-		SUM(so_luong) INTO so_luong_sach 
-	FROM 
-		bao_gom_online 
-	WHERE 
+	SELECT
+		SUM(so_luong) INTO so_luong_sach
+	FROM
+		bao_gom_online
+	WHERE
 		ma_don = OLD.ma_don;
 	-- Tinh tong tien sach cua don hang online
-	SELECT 
+	SELECT
 		SUM(bao_gom_online.so_luong * gia_niem_yet) INTO tong_tien_sach
-	FROM 
+	FROM
 		bao_gom_online, dau_sach
-	WHERE 
+	WHERE
 		ma_don = OLD.ma_don AND ma_dau_sach = ma;
 	-- Cap nhat tong so luong sach, tong tien trong don hang sau
-	UPDATE 
+	UPDATE
 		don_hang_online
-	SET 
-		so_luong = so_luong_sach, 
+	SET
+		so_luong = so_luong_sach,
 		tong_tien = tong_tien_sach
-	WHERE 
-		ma = OLD.ma_don;	
-	
+	WHERE
+		ma = OLD.ma_don;
+
 END $$
 
 DELIMITER ;
@@ -192,7 +187,7 @@ DELIMITER ;
 -- WHERE
 -- 	ma_don = "DHO000000004" AND
 -- 	ma_dau_sach = "DSA000000009";
-	
+
 
 -- Trigger: Xoá các bao_gom_online tương ứng khi xoá một Đon hàng.
 
@@ -202,20 +197,20 @@ CREATE TRIGGER `xoa_don_hang_online`
 BEFORE DELETE
 ON `don_hang_online` FOR EACH ROW
 BEGIN
-	DELETE FROM 
+	DELETE FROM
 		bao_gom_online
-	WHERE 
+	WHERE
 		ma_don = OLD.ma;
 END $$
 
 DELIMITER ;
 
--- DELETE FROM 
+-- DELETE FROM
 -- 	don_hang_online
 -- WHERE
 -- 	ma = "DHO000000004";
 
-	
+
 -- Thông tin các Đầu sách trong một Đơn hàng Online.
 
 DELIMITER $$
@@ -237,7 +232,7 @@ BEGIN
 		FORMAT(bao_gom_online.so_luong * gia_niem_yet, 0) AS tong_cong
 	FROM
 		don_hang_online,
-		bao_gom_online, 
+		bao_gom_online,
 		dau_sach
 	WHERE
 		don_hang_online.ma = ma_don_hang_online AND
@@ -295,7 +290,7 @@ DELIMITER ;
 
 -- Mã đầu sách không tồn tại
 -- CALL mua_dau_sach_nhieu_hon_x("DSA00000000A",2);
-	
+
 -- Số Đơn hàng Online có số lượng sách > x
 
 DELIMITER $$
@@ -304,17 +299,17 @@ CREATE DEFINER=`root`@`localhost` FUNCTION `don_mua_nhieu_hon_x_cuon` (
 	`SoLuong` INT)
 RETURNS INT
 BEGIN
-	DECLARE total INT DEFAULT 0; 
+	DECLARE total INT DEFAULT 0;
 	DECLARE num INT;
 	DECLARE finished INT DEFAULT 0;
 	DECLARE curSoLuong CURSOR FOR SELECT so_luong FROM don_hang_online;
 	DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = 1;
-	
+
 	IF SoLuong <= 0 THEN
 		SIGNAL SQLSTATE '45000'
 			SET MESSAGE_TEXT = "Số lượng nhập phải lớn hơn 0";
 	END IF;
-	
+
 	OPEN curSoLuong;
 	getSoLuong: LOOP
 		FETCH curSoLuong INTO num;
@@ -323,10 +318,10 @@ BEGIN
 		END IF;
 		IF num > SoLuong THEN
 			SET total = total + 1;
-		END IF;	
+		END IF;
 	END LOOP getSoLuong;
 	CLOSE curSoLuong;
-	
+
 	RETURN total;
 
 END $$
@@ -353,7 +348,7 @@ BEGIN
 	DECLARE doanh_thu_ngay_gan_nhat DECIMAL(11,2); -- Doanh thu ngay gan nhat voi ngay nhap
 	DECLARE ngay_gan_nhat DATE; 				   -- ngay gan nhat (co doanh thu)
 	DECLARE i INT; 								   -- Bien chay i
-	
+
 	SET ngay = STR_TO_DATE(ngay_nhap_vao, "%d-%m-%Y");
 	-- Kiem tra ngay nhap vao phai tu 01-01-2021
 	IF ngay < '2021-01-01' THEN
@@ -367,13 +362,13 @@ BEGIN
 	END IF;
 	-- Bang chua doanh thu online cua dau sach theo ngay
 	CREATE TEMPORARY TABLE doanh_thu_theo_ngay (
-		ngay_dat_dau_sach DATE, 
+		ngay_dat_dau_sach DATE,
 		doanh_thu_dau_sach DECIMAL(11,2));
 	-- Them du lieu doanh thu dau sach theo ngay vao bang
 	INSERT INTO doanh_thu_theo_ngay (ngay_dat_dau_sach, doanh_thu_dau_sach)
-	SELECT 
-		ngay_dat, 
-		SUM(bao_gom_online.so_luong * (gia_niem_yet - gia_nhap)) AS doanh_thu_sach 
+	SELECT
+		ngay_dat,
+		SUM(bao_gom_online.so_luong * (gia_niem_yet - gia_nhap)) AS doanh_thu_sach
 	FROM
 		dau_sach,
 		bao_gom_online,
@@ -384,13 +379,13 @@ BEGIN
 		ma_don = don_hang_online.ma
 	GROUP BY
 		ngay_dat;
-	
+
 	-- Neu trong ngay nhap vao, dau sach khong duoc dat thi doanh thu bang 0,
 	-- nguoc lai, lay doanh thu trong ngay do.
-	IF (SELECT COUNT(*) 
-		FROM doanh_thu_theo_ngay 
+	IF (SELECT COUNT(*)
+		FROM doanh_thu_theo_ngay
 		WHERE doanh_thu_theo_ngay.ngay_dat_dau_sach = ngay) = 0 THEN
-		
+
 		SET doanh_thu = 0;
 
 	ELSE
@@ -400,18 +395,18 @@ BEGIN
 			doanh_thu_theo_ngay
 		WHERE
 			doanh_thu_theo_ngay.ngay_dat_dau_sach = ngay;
-	END IF; 
-	
+	END IF;
+
 	-- Thuc hien loop de kiem tra ngay gan nhat co doanh thu
 	SET ngay_gan_nhat = ngay;
 	SET i = 0;
 
-	WHILE (i<365) DO 
+	WHILE (i<365) DO
 		SET ngay_gan_nhat = DATE_SUB(ngay_gan_nhat, INTERVAL 1 DAY);
-		IF (SELECT COUNT(*) 
-			FROM doanh_thu_theo_ngay 
+		IF (SELECT COUNT(*)
+			FROM doanh_thu_theo_ngay
 			WHERE doanh_thu_theo_ngay.ngay_dat_dau_sach = ngay_gan_nhat) > 0 THEN
-			
+
 			SELECT
 				doanh_thu_theo_ngay.doanh_thu_dau_sach INTO doanh_thu_ngay_gan_nhat
 			FROM
@@ -427,7 +422,7 @@ BEGIN
 	END WHILE;
 	-- Khong tim thay ngay gan nhat co doanh thu thi xem nhu doanh thu ngay gan nhat la 0.
 	-- Tra ve doanh thu ngay nhap vao
-	DROP TEMPORARY TABLE doanh_thu_theo_ngay; 
+	DROP TEMPORARY TABLE doanh_thu_theo_ngay;
 	RETURN doanh_thu;
 END $$
 
@@ -451,7 +446,7 @@ BEGIN
 			SET MESSAGE_TEXT = "Mã đầu sách không tồn tại !";
 	END IF;
 
-	SELECT 
+	SELECT
 		DATE_FORMAT(ngay_dat, '%d-%m-%Y') AS ngay,
 		SUM(bao_gom_online.so_luong) AS doanh_so_ban
 	FROM
@@ -481,9 +476,9 @@ DELIMITER $$
 
 CREATE DEFINER = `root`@`localhost` PROCEDURE `tong_doanh_so_ban_online`()
 BEGIN
-	SELECT 
-		DATE_FORMAT(ngay_dat, '%d-%m-%Y') AS ngay, 
-		SUM(don_hang_online.so_luong) AS tong_doanh_so_ban 
+	SELECT
+		DATE_FORMAT(ngay_dat, '%d-%m-%Y') AS ngay,
+		SUM(don_hang_online.so_luong) AS tong_doanh_so_ban
 	FROM
 		don_hang_online
 	GROUP BY
