@@ -418,7 +418,7 @@ DELIMITER ;
 
 DELIMITER $$
 CREATE TRIGGER `cap_nhap_doanh_so_khi_them_don_hang`
-BEFORE INSERT ON `don_hang`
+AFTER INSERT ON `don_hang`
 FOR EACH ROW
 BEGIN
     UPDATE thu_ngan
@@ -432,7 +432,7 @@ DELIMITER ;
 
 DELIMITER $$
 CREATE TRIGGER `cap_nhap_doanh_so_khi_sua_don_hang`
-BEFORE UPDATE ON `don_hang`
+AFTER UPDATE ON `don_hang`
 FOR EACH ROW
 BEGIN
     UPDATE thu_ngan
@@ -443,6 +443,18 @@ DELIMITER ;
 -- not tested
 
 
+
+DELIMITER $$
+CREATE TRIGGER `cap_nhap_doanh_so_khi_xoa_don_hang`
+AFTER DELETE ON `don_hang`
+FOR EACH ROW
+BEGIN
+    UPDATE thu_ngan
+    SET thu_ngan.doanh_so = thu_ngan.doanh_so - OLD.tong_tien
+    WHERE thu_ngan.ma = NEW.ma_thu_ngan;
+END $$
+DELIMITER ;
+-- not tested
 
 
 -- cau 3: thu tuc chua cau SQL
