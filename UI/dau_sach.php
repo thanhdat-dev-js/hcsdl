@@ -7,7 +7,7 @@ if (isset($_POST["btn-del"])) {
   $conn->query($query_del);
 }
 
-$sql_dau_sach = "SELECT * FROM dau_sach ORDER BY ma_nha_xuat_ban;";
+$sql_dau_sach = "CALL get_dau_sach();";
 $result_dau_sach = $conn->query($sql_dau_sach);
 if ($result_dau_sach->num_rows > 0) {
   $col = 1;
