@@ -97,8 +97,7 @@ DELIMITER ;
 
 
 
-DELIMITER
-$$
+DELIMITER $$
 CREATE DEFINER = `root`@`localhost`
 PROCEDURE `get_voucher`(
 IN `sdt_thanh_vien` CHAR(10)
@@ -122,8 +121,7 @@ END $$
 
 -- CALL get_voucher('0989000015')
 
-DELIMITER
-$$
+DELIMITER $$
 CREATE DEFINER = `root`@`localhost`
 PROCEDURE `get_voucher_1`(
 IN `soluong` INT

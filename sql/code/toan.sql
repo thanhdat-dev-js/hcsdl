@@ -451,7 +451,7 @@ FOR EACH ROW
 BEGIN
     UPDATE thu_ngan
     SET thu_ngan.doanh_so = thu_ngan.doanh_so - OLD.tong_tien
-    WHERE thu_ngan.ma = NEW.ma_thu_ngan;
+    WHERE thu_ngan.ma = OLD.ma_thu_ngan;
 END $$
 DELIMITER ;
 -- not tested
