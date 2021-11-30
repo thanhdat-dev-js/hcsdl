@@ -167,4 +167,11 @@ END$$
 DELIMITER ;
 
 
-
+DELIMITER $$
+CREATE PROCEDURE `get_dau_sach`() 
+BEGIN
+        SELECT * 
+        FROM `dau_sach` 
+        ORDER BY ma_nha_xuat_ban;
+END $$
+DELIMITER ;
