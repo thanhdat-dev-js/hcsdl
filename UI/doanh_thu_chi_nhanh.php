@@ -43,25 +43,12 @@ $conn->close();
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"> <a class="nav-link" href="#">Trang của P</a> </li>
-          <li class="nav-item"> <a class="nav-link" href="#">Trang của H</a> </li>
-          <li class="nav-item"> <a class="nav-link" href="dau_sach.php">Đầu sách</a> </li>
-          <li class="nav-item"> <a class="nav-link" href="#">Trang của K</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-          <li class="nav-item" style="margin-right: 10px;">
-            <a href="tom_tat_thong_tin_nhap_sach_theo_nha_xuat_ban.php" class="btn btn-secondary ">Tóm tắt thông tin nhập sách theo nhà xuất bản</a>
-          </li>
-        </ul>
-      </div>
     </div>
   </nav>
   <h2 style="text-align: center;"></h2>
 
-  <div>
+  <div class="container">
+    <h4>Doanh thu chi nhánh</h4>
     <table class="table table-striped table-hover">
       <thead>
         <tr>
