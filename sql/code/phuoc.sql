@@ -1,8 +1,44 @@
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
+PROCEDURE `them_nha_xuat_ban`(
+    IN  ten                     VARCHAR(40),
+    IN  email                   VARCHAR(60),
+    IN  sdt                     CHAR(10),
+    IN  dia_chi                 VARCHAR(200),
+    IN  website                 VARCHAR(255)
+)
+BEGIN
+    DECLARE ma CHAR(12);
+
+    CALL assert_has_value_varchar(ten, "ten");
+    CALL assert_has_value_varchar(email, "email");
+    CALL assert_valid_email(email);
+    CALL assert_valid_phone(sdt);
+
+    SET ma = (SELECT MAX(nha_xuat_ban.ma) FROM nha_xuat_ban);
+    SET ma = next_id(ma);
+    INSERT INTO nha_xuat_ban
+    VALUES (ma, ten, email, sdt, dia_chi, website);
+END$$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE TRIGGER `kiem_tra_nha_xuat_ban`
+BEFORE INSERT ON `nha_xuat_ban`
+FOR EACH ROW
+BEGIN
+    CALL assert_valid_email(NEW.email);
+    CALL assert_valid_phone(NEW.sdt);
+END $$
+DELIMITER ;
+
+
+
 DELIMITER $$
 CREATE DEFINER = `root`@`localhost` PROCEDURE `them_don_hang`(
-    IN `ngay_tao` DATE,
-    IN `so_luong` INT(11),
-    IN `tong_tien` DECIMAL(11, 2),
+    IN `ngay_tao` char(12),
     IN `ma_thu_ngan` char(12),
     IN `ma_thanh_vien` char(12),
     IN `ma_quan_ly` char(12)
@@ -20,10 +56,10 @@ BEGIN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Thu ngan khong ton tai" ;
     ELSE 
         INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly)
-        VALUES (ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly);
+        VALUES (ma, ngay_tao, 0, 0, ma_thu_ngan, ma_thanh_vien, ma_quan_ly);
     END IF;
 END $$
-
+--  cau 2
 DELIMITER $$
 CREATE TRIGGER `after_them_quyen_sach_vao_bao_gom`
 AFTER INSERT ON `bao_gom`
@@ -58,3 +94,47 @@ BEGIN
     WHERE ma = NEW.ma_don;
 END $$
 DELIMITER ;
+
+-- Câu 3
+-- a
+DELIMITER
+    $$
+CREATE DEFINER = `root`@`localhost` PROCEDURE `phuoc_get_data_1`(
+    IN `ngay_bat_dau` DATE,
+    IN `ngay_ket_thuc` DATE
+)
+BEGIN
+    SELECT
+        thu_ngan.ma
+    FROM
+        thu_ngan,
+        don_hang
+    WHERE
+        don_hang.ma_thu_ngan = thu_ngan.ma AND
+        don_hang.ngay_tao >= ngay_bat_dau AND
+        don_hang.ngay_tao <= ngay_ket_thuc
+    ORDER BY 
+        thu_ngan.ma
+END $$
+
+DELIMITER
+    $$
+CREATE DEFINER = `root`@`localhost` PROCEDURE `phuoc_get_data_2`(
+    -- IN `ma_quay` CHAR(12)
+    IN `min_tien` DECIMAL(11,2)
+)
+BEGIN
+    SELECT
+       ma_quay ,AVG(tong_tien)
+    FROM
+        thu_ngan,
+        don_hang
+    WHERE
+        don_hang.ma_thu_ngan = thu_ngan.ma
+    GROUP BY
+        ma_quay
+    HAVING 
+        AVG(tong_tien) > min_tien
+    ORDER BY 
+        AVG(tong_tien)
+END $$
