@@ -16,8 +16,8 @@ BEGIN
     END IF ;
 END $$
 
-CALL them_voucher("VC0001234",DATE "2021-10-30",DATE "2021-12-12","DHA000000017","D070802000010",0)
-CALL them_voucher("VC000123456",DATE "2021-12-30",DATE "2021-12-12","DHA000000018","070802000010",0)
+-- CALL them_voucher("VC0001234",DATE "2021-10-30",DATE "2021-12-12","DHA000000017","D070802000010",0)
+-- CALL them_voucher("VC000123456",DATE "2021-12-30",DATE "2021-12-12","DHA000000018","070802000010",0)
 
 
 -- DELIMITER $$
@@ -39,7 +39,7 @@ CALL them_voucher("VC000123456",DATE "2021-12-30",DATE "2021-12-12","DHA00000001
 
 --     SET giamtheophantram = tongtien * phantramgiam;
 
---     IF giamtheophantram >= giamtoida THEN 
+--     IF giamtheophantram >= giamtoida THEN
 --         UPDATE don_hang SET tong_tien = tongtien - giamtoida WHERE don_hang.ma = madon;
 --     ELSE
 --         UPDATE don_hang SET tong_tien = tongtien - giamtheophantram WHERE don_hang.ma = madon;
@@ -48,8 +48,19 @@ CALL them_voucher("VC000123456",DATE "2021-12-30",DATE "2021-12-12","DHA00000001
 -- END $$
 -- DELIMITER ;
 
+
 DELIMITER $$
-CREATE TRIGGER after_them_quyen_sach_vao_bao_gom
+CREATE TRIGGER `before_danh_dau_insert`
+BEFORE INSERT ON `giam_gia`
+FOR EACH ROW
+BEGIN
+    UPDATE voucher SET da_su_dung = 1 WHERE ma = NEW.ma;
+END $$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE TRIGGER after_xoa_quyen_sach_khoi_bao_gom
 AFTER DELETE ON bao_gom
 FOR EACH ROW
 BEGIN
@@ -58,36 +69,35 @@ BEGIN
     DECLARE update_so_luong INT;
     DECLARE update_tien DECIMAL;
     DECLARE update_ma_dau_sach varchar(12);
-    
+
     SELECT ma_dau_sach
     INTO update_ma_dau_sach
     FROM quyen_sach
-    WHERE quyen_sach.ma = NEW.ma_quyen_sach;
+    WHERE quyen_sach.ma = OLD.ma_quyen_sach;
 
     SELECT so_luong, tong_tien
     INTO update_so_luong, update_tong_tien
     FROM don_hang
-    WHERE don_hang.ma= NEW.ma_don;
-    
+    WHERE don_hang.ma= OLD.ma_don;
+
     SELECT gia_niem_yet
     INTO update_tien
     FROM dau_sach
     WHERE dau_sach.ma = update_ma_dau_sach;
-    
+
     SET update_tong_tien = update_tong_tien + update_tien;
     set update_so_luong = update_so_luong - 1;
-    
+
     UPDATE don_hang
     SET so_luong = update_so_luong, tong_tien = update_tong_tien
-    WHERE ma = NEW.ma_don;
+    WHERE ma = OLD.ma_don;
 END $$
 DELIMITER ;
 
 
 
 
-DELIMITER
-$$
+DELIMITER $$
 CREATE DEFINER = `root`@`localhost`
 PROCEDURE `get_voucher`(
 IN `sdt_thanh_vien` CHAR(10)
@@ -105,14 +115,13 @@ thanh_vien
 WHERE
 voucher.ma_thanh_vien = thanh_vien.cccd
 AND thanh_vien.sdt = sdt_thanh_vien
-ORDER BY 
+ORDER BY
 voucher.ma;
 END $$
 
-CALL get_voucher('0989000015')
+-- CALL get_voucher('0989000015')
 
-DELIMITER
-$$
+DELIMITER $$
 CREATE DEFINER = `root`@`localhost`
 PROCEDURE `get_voucher_1`(
 IN `soluong` INT
@@ -135,7 +144,7 @@ ORDER BY
 COUNT(voucher.ma_thanh_vien) ;
 END $$
 
-CALL get_voucher_1(1)
+-- CALL get_voucher_1(1)
 
 
 DELIMITER $$
@@ -176,7 +185,7 @@ FUNCTION `so_voucher_co_thoi_gian_hieu_luc_sau_ngay` (`ngay` DATE) RETURNS INT(1
     DECLARE cur CURSOR FOR SELECT thoi_gian_bat_dau_hieu_luc FROM voucher;
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = true;
 
-    
+
     SET total = 0;
     OPEN cur;
     FETCH cur INTO temp;
