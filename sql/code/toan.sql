@@ -344,6 +344,7 @@ DELIMITER ;
 
 
 
+-- CALL them_nhan_vien("Nguyễn Văn", "Hoàng", CAST("1997-08-29" AS DATE), "nguyen.van.hoang.9999@sahafake.com", "0989000111", null, "070802000100", 100000000, CAST("2017-07-20" AS DATE), "CNH000000000", 0);
 
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost`
@@ -402,7 +403,7 @@ BEGIN
     INSERT INTO nhan_vien
     VALUES (ma, ho, ten, ngay_sinh, email, sdt, dia_chi, cccd, luong, thoi_gian_bat_dau_lam, ma_chi_nhanh, ma_quan_ly);
 
-    if la_quan_ly THEN
+    IF la_quan_ly THEN
         INSERT INTO nhan_vien
         VALUES (ma, ma_chi_nhanh);
     END IF;
@@ -457,13 +458,29 @@ DELIMITER ;
 
 
 DELIMITER $$
-CREATE TRIGGER `kiem_tra_nhan_vien`
+CREATE TRIGGER `kiem_tra_nhan_vien_insert`
 BEFORE INSERT ON `nhan_vien`
 FOR EACH ROW
 BEGIN
     CALL assert_age_aleast(NEW.ngay_sinh, 18);
     CALL assert_valid_email(NEW.email);
     CALL assert_valid_phone(NEW.sdt);
+    CALL assert_valid_ssn(NEW.cccd);
+    CALL assert_employee_has_minimum_salary(NEW.thoi_gian_bat_dau_lam, NEW.luong);
+END $$
+DELIMITER ;
+
+
+
+DELIMITER $$
+CREATE TRIGGER `kiem_tra_nhan_vien_update`
+BEFORE UPDATE ON `nhan_vien`
+FOR EACH ROW
+BEGIN
+    CALL assert_age_aleast(NEW.ngay_sinh, 18);
+    CALL assert_valid_email(NEW.email);
+    CALL assert_valid_phone(NEW.sdt);
+    CALL assert_valid_ssn(NEW.cccd);
     CALL assert_employee_has_minimum_salary(NEW.thoi_gian_bat_dau_lam, NEW.luong);
 END $$
 DELIMITER ;
@@ -473,8 +490,8 @@ DELIMITER ;
 
 
 DELIMITER $$
-CREATE TRIGGER `kiem_tra_nha_xuat_ban`
-BEFORE INSERT ON `nhan_vien`
+CREATE TRIGGER `kiem_tra_nha_xuat_ban_insert`
+BEFORE INSERT ON `nha_xuat_ban`
 FOR EACH ROW
 BEGIN
     CALL assert_valid_email(NEW.email);
@@ -484,32 +501,123 @@ DELIMITER ;
 
 
 
+
+DELIMITER $$
+CREATE TRIGGER `kiem_tra_nha_xuat_ban_update`
+BEFORE UPDATE ON `nha_xuat_ban`
+FOR EACH ROW
+BEGIN
+    CALL assert_valid_email(NEW.email);
+    CALL assert_valid_phone(NEW.sdt);
+END $$
+DELIMITER ;
+
+
+
+
+
+-- DELIMITER $$
+-- CREATE TRIGGER `cap_nhap_doanh_so_khi_them_don_hang`
+-- BEFORE INSERT ON `don_hang`
+-- FOR EACH ROW
+-- BEGIN
+--     UPDATE thu_ngan
+--     SET thu_ngan.doanh_so = thu_ngan.doanh_so + NEW.tong_tien
+--     WHERE thu_ngan.ma = NEW.ma_thu_ngan;
+-- END $$
+-- DELIMITER ;
+-- -- not tested
+
+
+-- DELIMITER $$
+-- CREATE TRIGGER `cap_nhap_doanh_so_khi_sua_don_hang`
+-- BEFORE INSERT ON `don_hang`
+-- FOR EACH ROW
+-- BEGIN
+--     UPDATE thu_ngan
+--     SET thu_ngan.doanh_so = thu_ngan.doanh_so + NEW.tong_tien - OLD.tong_tien
+--     WHERE thu_ngan.ma = NEW.ma_thu_ngan;
+-- END $$
+-- DELIMITER ;
+-- -- not tested
+
+
+
+
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost`
-FUNCTION `discount_amount`(
-    `voucher_id`            CHAR(12),
-    `book_id`               CHAR(12)
+FUNCTION `luong_trung_binh_chi_nhanh`(
+    `ma_chi_nhanh`          CHAR(12)
 )
 RETURNS DECIMAL(11, 2)
 BEGIN
-    SET @cost = (SELECT gia_niem_yet FROM dau_sach WHERE ma = book_id);
-    SET @percentage = (SELECT phan_tram_giam FROM giam_gia WHERE ma = voucher_id);
-    SET @max_discount = (SELECT giam_toi_da FROM giam_gia WHERE ma = voucher_id);
-    SET @amount = LEAST(@max_discount, @percentage * @cost);
-    RETURN @amount;
+    DECLARE done INT DEFAULT 0;
+    DECLARE ton_tai INT DEFAULT 0;
+    DECLARE l DECIMAL(11, 2);
+    DECLARE tong_luong DECIMAL(11, 2);
+    DECLARE so_luong INT;
+    DECLARE cur CURSOR FOR SELECT luong FROM nhan_vien WHERE nhan_vien.ma_chi_nhanh = ma_chi_nhanh;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
+
+    SET ton_tai = (SELECT COUNT(*) FROM chi_nhanh WHERE chi_nhanh.ma = ma_chi_nhanh);
+    IF NOT ton_tai THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Mã chi nhánh không hợp lệ';
+    END IF;
+
+
+    SET tong_luong = 0.0;
+    SET so_luong = 0;
+    OPEN cur;
+    loop_label: LOOP
+        FETCH cur INTO l;
+        IF done THEN
+            LEAVE loop_label;
+        END IF;
+        SET tong_luong = tong_luong + l;
+        SET so_luong = so_luong + 1;
+    END LOOP loop_label;
+    CLOSE cur;
+
+    RETURN tong_luong / so_luong;
 END$$
 DELIMITER ;
 
 
 
 
-
 DELIMITER $$
-CREATE TRIGGER `cap_nhap_gia_don_hang_khi_them_ap_dung_cho`
-BEFORE INSERT ON `nhan_vien`
-FOR EACH ROW
+CREATE DEFINER=`root`@`localhost`
+FUNCTION `so_nhan_vien_co_luong_it_nhat_x`(
+    `x`                 DECIMAL(11, 2)
+)
+RETURNS INT
 BEGIN
-END $$
+    DECLARE done INT DEFAULT 0;
+    DECLARE l DECIMAL(11, 2);
+    DECLARE so_luong INT;
+    DECLARE cur CURSOR FOR SELECT luong FROM nhan_vien;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
+
+    IF x < 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Đầu vào không được nhỏ hơn 0';
+    END IF;
+
+
+    SET so_luong = 0;
+    OPEN cur;
+    loop_label: LOOP
+        FETCH cur INTO l;
+        IF done THEN
+            LEAVE loop_label;
+        END IF;
+        IF l >= x THEN
+            SET so_luong = so_luong + 1;
+        END IF;
+    END LOOP loop_label;
+    CLOSE cur;
+
+    RETURN so_luong;
+END$$
 DELIMITER ;
--- not tested
+
 
