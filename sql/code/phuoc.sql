@@ -98,6 +98,9 @@ CREATE DEFINER = `root`@`localhost` PROCEDURE `phuoc_get_data_1`(
     IN `ngay_ket_thuc` DATE
 )
 BEGIN
+    IF ngay_bat_dau > ngay_ket_thuc THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Invalid Date Range";
+    END IF;
     SELECT
         thu_ngan.ma_quay
     FROM
