@@ -20,6 +20,7 @@ BEGIN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "gia niem yet phai lon hon gia nhap va so luong sach phai lon hon 0" ;
     END IF ;
 END $$
+DELIMITER ;
 
 
 
@@ -44,7 +45,7 @@ DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `hoan_so_luong_dau_sach`
 AFTER DELETE ON `bao_gom_online`
-FOR EACH ROW 
+FOR EACH ROW
 BEGIN
     DECLARE soluong INT;
     SET soluong = ( SELECT so_luong FROM dau_sach WHERE ma = OLD.ma_dau_sach);
@@ -56,8 +57,7 @@ END $$
 DELIMITER ;
 
 
- DELIMITER
-    $$
+ DELIMITER $$
 CREATE DEFINER = `root`@`localhost` PROCEDURE `get_data_1`(
     IN `ten_nha_xuat_ban` VARCHAR(50)
 )
@@ -74,9 +74,10 @@ BEGIN
     WHERE
         dau_sach.ma_nha_xuat_ban = nha_xuat_ban.ma AND nha_xuat_ban.ten = ten_nha_xuat_ban
     ORDER BY
-        gia_niem_yet ; END $$
-    DELIMITER
-        ;
+        gia_niem_yet ;
+END $$
+DELIMITER ;
+
 
 DELIMITER $$
 CREATE DEFINER = `root`@`localhost`
@@ -97,6 +98,7 @@ BEGIN
     ORDER BY
         COUNT(ma_nha_xuat_ban) ;
 END $$
+DELIMITER ;
 
 
 
@@ -133,9 +135,9 @@ DELIMITER ;
 
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` 
-FUNCTION `so_dau_sach_it_hon_n_cuon` (`max_sl` INT) 
-RETURNS INT(11) 
+CREATE DEFINER=`root`@`localhost`
+FUNCTION `so_dau_sach_it_hon_n_cuon` (`max_sl` INT)
+RETURNS INT(11)
 BEGIN
     DECLARE total INT;
     DECLARE temp INT;

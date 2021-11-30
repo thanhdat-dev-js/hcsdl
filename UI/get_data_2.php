@@ -73,12 +73,6 @@ $conn->close();
           <li class="nav-item" style="margin-right: 10px;">
             <a href="./dau_sach.php" class="btn btn-primary">Trở về trang đầu sách</a>
           </li>
-          <li class="nav-item" style="margin-right: 10px;">
-            <a href="./get_data_1.php" class="btn btn-primary "> Tìm các đầu sách thuộc nhà xuất bản</a>
-          </li>
-          <li class="nav-item">
-            <a href="./them_dau_sach.php" class="btn btn-primary ">Thêm đầu sách mới</a>
-          </li>
         </ul>
       </div>
     </div>

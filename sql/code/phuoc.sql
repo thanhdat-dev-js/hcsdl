@@ -16,7 +16,7 @@ BEGIN
     IF email = "" THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Email khong duoc rong";
     END IF;
-    
+
     IF ISNULL(ten) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Ten khong duoc null";
     END IF;
@@ -66,7 +66,7 @@ BEGIN
     DECLARE update_so_luong INT;
     DECLARE update_tien DECIMAL;
     DECLARE update_ma_dau_sach varchar(12);
-    
+
     SELECT ma_dau_sach
     INTO update_ma_dau_sach
     FROM quyen_sach
@@ -76,15 +76,15 @@ BEGIN
     INTO update_so_luong, update_tong_tien
     FROM don_hang
     WHERE don_hang.ma= NEW.ma_don;
-    
+
     SELECT gia_niem_yet
     INTO update_tien
     FROM dau_sach
     WHERE dau_sach.ma = update_ma_dau_sach;
-    
+
     SET update_tong_tien = update_tong_tien + update_tien;
     set update_so_luong = update_so_luong + 1;
-    
+
     UPDATE don_hang
     SET so_luong = update_so_luong, tong_tien = update_tong_tien
     WHERE ma = NEW.ma_don;
@@ -107,16 +107,15 @@ BEGIN
         don_hang.ma_thu_ngan = thu_ngan.ma AND
         don_hang.ngay_tao >= ngay_bat_dau AND
         don_hang.ngay_tao <= ngay_ket_thuc
-    GROUP BY 
+    GROUP BY
         thu_ngan.ma_quay
-    ORDER BY 
+    ORDER BY
         thu_ngan.ma_quay;
 END $$
 DELIMITER ;
 
 DELIMITER $$
 CREATE DEFINER = `root`@`localhost` PROCEDURE `phuoc_get_data_2`(
-    -- IN `ma_quay` CHAR(12)
     IN `min_tien` DECIMAL(11,2)
 )
 BEGIN
@@ -129,17 +128,17 @@ BEGIN
         don_hang.ma_thu_ngan = thu_ngan.ma
     GROUP BY
         ma_quay
-    HAVING 
+    HAVING
         AVG(tong_tien) > min_tien
-    ORDER BY 
+    ORDER BY
         AVG(tong_tien)
 END $$
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` 
-FUNCTION `so_don_hang_trong_ngay` (`check_date` DATE) 
-RETURNS INT(11) 
+CREATE DEFINER=`root`@`localhost`
+FUNCTION `so_don_hang_trong_ngay` (`check_date` DATE)
+RETURNS INT(11)
 BEGIN
     DECLARE total INT;
     DECLARE temp INT;
@@ -169,9 +168,9 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` 
-FUNCTION `so_don_hang_co_tong_tien_lon_hon` (`num` INT) 
-RETURNS INT(11) 
+CREATE DEFINER=`root`@`localhost`
+FUNCTION `so_don_hang_co_tong_tien_lon_hon` (`num` INT)
+RETURNS INT(11)
 BEGIN
     DECLARE total INT;
     DECLARE temp INT;
