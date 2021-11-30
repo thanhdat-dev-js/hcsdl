@@ -55,16 +55,16 @@ $conn->close();
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">Trang của P</a>
+            <a class="nav-link" href="./nha_xuat_ban.php">Nhà xuất bản (Phước)</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Trang của H</a>
+            <a class="nav-link" href="./voucher.php">Voucher (Hòa)</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="nhan_vien.php">Nhân viên</a>
+            <a class="nav-link" href="./nhan_vien.php">Nhân viên (Toàn)</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Trang của K</a>
+            <a class="nav-link" href="">Đơn hàng online (Khang)</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">

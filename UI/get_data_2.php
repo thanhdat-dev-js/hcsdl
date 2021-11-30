@@ -49,7 +49,7 @@ $conn->close();
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="dau_sach.php" style="font-weight: 700;">Bảng đầu sách</a>
+      <a class="navbar-brand" href="dau_sach.php" style="font-weight: 700;">Bảng đầu sách (Đạt)</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -57,16 +57,16 @@ $conn->close();
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">Trang của P</a>
+            <a class="nav-link" href="./nha_xuat_ban.php">Nhà xuất bản (Phước)</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Trang của H</a>
+            <a class="nav-link" href="./voucher.php">Voucher (Hòa)</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="nhan_vien.php">Nhân viên</a>
+            <a class="nav-link" href="./nhan_vien.php">Nhân viên (Toàn)</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Trang của K</a>
+            <a class="nav-link" href="">Đơn hàng online (Khang)</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
