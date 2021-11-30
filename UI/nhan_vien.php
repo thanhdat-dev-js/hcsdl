@@ -80,27 +80,35 @@ $conn->close();
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="nhan_vien.php" style="font-weight: 700;">Bảng nhân viên</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="nhan_vien.php" style="font-weight: 700;">Bảng nhân viên (Toàn)</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"> <a class="nav-link" href="#">Trang của P</a> </li>
-          <li class="nav-item"> <a class="nav-link" href="#">Trang của H</a> </li>
-          <li class="nav-item"> <a class="nav-link" href="dau_sach.php">Đầu sách</a> </li>
-          <li class="nav-item"> <a class="nav-link" href="#">Trang của K</a>
+          <li class="nav-item">
+            <a class="nav-link" href="./nha_xuat_ban.php">Nhà xuất bản (Phước)</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./voucher.php">Voucher (Hòa)</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./dau_sach.php">Đầu sách (Đạt)</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./don_hang_online.php">Đơn hàng online (Khang)</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
           <li class="nav-item" style="margin-right: 10px;">
-            <a href="tom_tat_thong_tin_nhap_sach_theo_nha_xuat_ban.php" class="btn btn-secondary ">Tóm tắt thông tin nhập sách theo nhà xuất bản</a>
+            <a href="./tom_tat_thong_tin_nhap_sach_theo_nha_xuat_ban.php" class="btn btn-success ">Tóm tắt thông tin nhập sách theo nhà xuất bản</a>
           </li>
           <li class="nav-item" style="margin-right: 10px;">
-            <a href="doanh_thu_chi_nhanh.php" class="btn btn-secondary ">Doanh thu chi nhánh</a>
+            <a href="./doanh_thu_chi_nhanh.php" class="btn btn-secondary ">Doanh thu chi nhánh</a>
           </li>
           <li class="nav-item">
-            <a href="them_nhan_vien.php" class="btn btn-primary ">Thêm nhân viên mới</a>
+            <a href="./them_nhan_vien.php" class="btn btn-primary ">Thêm nhân viên</a>
           </li>
         </ul>
       </div>
@@ -108,7 +116,8 @@ $conn->close();
   </nav>
   <h2 style="text-align: center;"></h2>
 
-  <div>
+  <div class="container">
+    <h4>Danh sách nhân viên</h4>
     <table class="table table-striped table-hover">
       <thead>
         <tr>
