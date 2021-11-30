@@ -15,6 +15,7 @@ if (isset($_POST["btn_search"])) {
             $data_quay .= '<tr>
           <td scope="col">' . $col . '</td>
           <td scope="col">' . $row["ma_quay"] . '</td>
+          <td scope="col">' . $row["COUNT(ma_quay)"] . '</td>
         </tr>';
             $col++;
         }
@@ -43,6 +44,7 @@ require_once "./P_includes/header.php";
             <tr>
                 <th scope="col">STT</th>
                 <th scope="col">Mã quầy</th>
+                <th scope="col">Số lần</th>
             </tr>
         </thead>
         <tbody>

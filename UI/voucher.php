@@ -68,7 +68,7 @@ $conn->close();
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">Trang của P</a>
+            <a class="nav-link" href="nha_xuat_ban.php">Nhà xuất bản</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="dau_sach.php">Bảng đầu sách</a>
@@ -77,7 +77,7 @@ $conn->close();
             <a class="nav-link" href="nhan_vien.php">Nhân viên</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Trang của K</a>
+            <a class="nav-link" href="don_hang_online.php">Đơn hàng online</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
