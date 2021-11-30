@@ -1,4 +1,3 @@
--- * cau 1 -----------------------------------------------------------------
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost`
 PROCEDURE `them_nha_xuat_ban`(
@@ -40,8 +39,6 @@ BEGIN
 END$$
 DELIMITER ;
 
-
---  * cau 2 -------------------------------------------------------
 DELIMITER $$
 CREATE TRIGGER `kiem_tra_nha_xuat_ban`
 BEFORE UPDATE ON `nha_xuat_ban`
@@ -94,11 +91,8 @@ BEGIN
 END $$
 DELIMITER ;
 
--- * Cau 3 --------------------------------------------------------
--- ! a
 
-DELIMITER
-    $$
+DELIMITER $$
 CREATE DEFINER = `root`@`localhost` PROCEDURE `phuoc_get_data_1`(
     IN `ngay_bat_dau` DATE,
     IN `ngay_ket_thuc` DATE
@@ -118,10 +112,9 @@ BEGIN
     ORDER BY 
         thu_ngan.ma_quay;
 END $$
+DELIMITER ;
 
--- ! b
-DELIMITER
-    $$
+DELIMITER $$
 CREATE DEFINER = `root`@`localhost` PROCEDURE `phuoc_get_data_2`(
     -- IN `ma_quay` CHAR(12)
     IN `min_tien` DECIMAL(11,2)
@@ -141,7 +134,39 @@ BEGIN
     ORDER BY 
         AVG(tong_tien)
 END $$
+DELIMITER ;
 
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` 
+FUNCTION `so_don_hang_trong_ngay` (`check_date` DATE) 
+RETURNS INT(11) 
+BEGIN
+    DECLARE total INT;
+    DECLARE temp INT;
+    DECLARE done INT DEFAULT false;
+    DECLARE cur CURSOR FOR SELECT ngay_tao from don_hang;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = true;
+    set @dif = TIMESTAMPDIFF(DAY, check_date, CURDATE());
+    IF @dif < 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'ngay nay chua xay ra';
+    END IF;
+
+    SET total = 0;
+    OPEN cur;
+    FETCH cur INTO temp;
+    WHILE(NOT done)
+    DO
+        IF temp = date
+        THEN
+        SET total = total + 1;
+        END IF;
+        FETCH cur INTO temp;
+    END WHILE;
+
+    CLOSE cur;
+    RETURN total;
+END $$
+DELIMITER ;
 
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` 
@@ -169,8 +194,7 @@ BEGIN
         END IF;
         FETCH cur INTO temp;
     END WHILE;
-
     CLOSE cur;
     RETURN total;
-END$$
+END $$
 DELIMITER ;

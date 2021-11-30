@@ -20,7 +20,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"> <a class="nav-link" href="nha_xuat_ban.php">Nhà xuất bản</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="#">Trang của H</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Đầu sách</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="dau_sach.php">Đầu sách</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="#">Trang của K</a>
                     </li>
                 </ul>
