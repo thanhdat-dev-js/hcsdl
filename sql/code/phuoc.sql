@@ -141,3 +141,36 @@ BEGIN
     ORDER BY 
         AVG(tong_tien)
 END $$
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` 
+FUNCTION `so_don_hang_co_tong_tien_lon_hon` (`num` INT) 
+RETURNS INT(11) 
+BEGIN
+    DECLARE total INT;
+    DECLARE temp INT;
+    DECLARE done INT DEFAULT false;
+    DECLARE cur CURSOR FOR SELECT tong_tien from don_hang;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = true;
+
+    IF num <= 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'tham số đầu vào num phải > 0';
+    END IF;
+
+    SET total = 0;
+    OPEN cur;
+    FETCH cur INTO temp;
+    WHILE(NOT done)
+    DO
+        IF temp > num
+        THEN
+        SET total = total + 1;
+        END IF;
+        FETCH cur INTO temp;
+    END WHILE;
+
+    CLOSE cur;
+    RETURN total;
+END$$
+DELIMITER ;
