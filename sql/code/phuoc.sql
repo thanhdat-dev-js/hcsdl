@@ -102,7 +102,7 @@ BEGIN
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Invalid Date Range";
     END IF;
     SELECT
-        thu_ngan.ma_quay
+        thu_ngan.ma_quay, COUNT(ma_quay)
     FROM
         thu_ngan,
         don_hang
@@ -113,7 +113,7 @@ BEGIN
     GROUP BY
         thu_ngan.ma_quay
     ORDER BY
-        thu_ngan.ma_quay;
+        COUNT(ma_quay);
 END $$
 DELIMITER ;
 

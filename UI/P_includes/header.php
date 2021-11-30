@@ -12,16 +12,16 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="nha_xuat_ban.php" style="font-weight: 700;">Bảng nhà xuất bản</a>
+            <a class="navbar-brand" href="nha_xuat_ban.php" style="font-weight: 700;">Nhà xuất bản (Phước)</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"> <a class="nav-link" href="nha_xuat_ban.php">Nhà xuất bản</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Trang của H</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="dau_sach.php">Đầu sách</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Trang của K</a>
+                    <li class="nav-item"> <a class="nav-link" href="nha_xuat_ban.php">Nhân viên (Toàn) </a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="#">Voucher (Hoà)</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="dau_sach.php">Đầu sách (Đạt)</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="#">Đơn hàng online (Khang)</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
