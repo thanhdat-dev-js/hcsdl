@@ -1,4 +1,3 @@
-
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost`
 PROCEDURE `them_nha_xuat_ban`(
@@ -11,10 +10,27 @@ PROCEDURE `them_nha_xuat_ban`(
 BEGIN
     DECLARE ma CHAR(12);
 
-    CALL assert_has_value_varchar(ten, "ten");
-    CALL assert_has_value_varchar(email, "email");
-    CALL assert_valid_email(email);
-    CALL assert_valid_phone(sdt);
+    IF ISNULL(email) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Email khong duoc null";
+    END IF;
+    IF email = "" THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Email khong duoc rong";
+    END IF;
+
+    IF ISNULL(ten) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Ten khong duoc null";
+    END IF;
+    IF ten = "" THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Ten khong duoc rong";
+    END IF;
+
+    IF NOT (SELECT email REGEXP '^.+@.+\..+$') THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Invalid Email";
+    END IF;
+
+    IF NOT (SELECT sdt REGEXP '^0[0-9]{9}$') THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Invalid Phone";
+    END IF;
 
     SET ma = (SELECT MAX(nha_xuat_ban.ma) FROM nha_xuat_ban);
     SET ma = next_id(ma);
@@ -23,43 +39,23 @@ BEGIN
 END$$
 DELIMITER ;
 
-
 DELIMITER $$
 CREATE TRIGGER `kiem_tra_nha_xuat_ban`
-BEFORE INSERT ON `nha_xuat_ban`
+BEFORE UPDATE ON `nha_xuat_ban`
 FOR EACH ROW
 BEGIN
-    CALL assert_valid_email(NEW.email);
-    CALL assert_valid_phone(NEW.sdt);
+    IF NOT (SELECT NEW.email REGEXP '^.+@.+\..+$') THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Invalid Email";
+    END IF;
+
+    IF NOT (SELECT NEW.sdt REGEXP '^0[0-9]{9}$') THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Invalid Phone";
+    END IF;
+    -- CALL assert_valid_email(NEW.email);
+    -- CALL assert_valid_phone(NEW.sdt);
 END $$
 DELIMITER ;
 
-
-
-DELIMITER $$
-CREATE DEFINER = `root`@`localhost` PROCEDURE `them_don_hang`(
-    IN `ngay_tao` char(12),
-    IN `ma_thu_ngan` char(12),
-    IN `ma_thanh_vien` char(12),
-    IN `ma_quan_ly` char(12)
-)
-BEGIN
-    DECLARE ma CHAR(12) ;
-    DECLARE them_ma_quay CHAR(12);
-    SET ma =( SELECT MAX(don_hang.ma) FROM don_hang) ;
-    SET ma = next_id(ma) ;
-    SELECT ma_quay
-    INTO them_ma_quay
-    FROM thu_ngan
-    WHERE thu_ngan.ma = ma_thu_ngan;
-    IF them_ma_quay IS NULL THEN 
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Thu ngan khong ton tai" ;
-    ELSE 
-        INSERT INTO don_hang(ma, ngay_tao, so_luong, tong_tien, ma_thu_ngan, ma_thanh_vien, ma_quan_ly)
-        VALUES (ma, ngay_tao, 0, 0, ma_thu_ngan, ma_thanh_vien, ma_quan_ly);
-    END IF;
-END $$
---  cau 2
 DELIMITER $$
 CREATE TRIGGER `after_them_quyen_sach_vao_bao_gom`
 AFTER INSERT ON `bao_gom`
@@ -70,7 +66,7 @@ BEGIN
     DECLARE update_so_luong INT;
     DECLARE update_tien DECIMAL;
     DECLARE update_ma_dau_sach varchar(12);
-    
+
     SELECT ma_dau_sach
     INTO update_ma_dau_sach
     FROM quyen_sach
@@ -80,32 +76,30 @@ BEGIN
     INTO update_so_luong, update_tong_tien
     FROM don_hang
     WHERE don_hang.ma= NEW.ma_don;
-    
+
     SELECT gia_niem_yet
     INTO update_tien
     FROM dau_sach
     WHERE dau_sach.ma = update_ma_dau_sach;
-    
+
     SET update_tong_tien = update_tong_tien + update_tien;
     set update_so_luong = update_so_luong + 1;
-    
+
     UPDATE don_hang
     SET so_luong = update_so_luong, tong_tien = update_tong_tien
     WHERE ma = NEW.ma_don;
 END $$
 DELIMITER ;
 
--- Câu 3
--- a
-DELIMITER
-    $$
+
+DELIMITER $$
 CREATE DEFINER = `root`@`localhost` PROCEDURE `phuoc_get_data_1`(
     IN `ngay_bat_dau` DATE,
     IN `ngay_ket_thuc` DATE
 )
 BEGIN
     SELECT
-        thu_ngan.ma
+        thu_ngan.ma_quay
     FROM
         thu_ngan,
         don_hang
@@ -113,14 +107,15 @@ BEGIN
         don_hang.ma_thu_ngan = thu_ngan.ma AND
         don_hang.ngay_tao >= ngay_bat_dau AND
         don_hang.ngay_tao <= ngay_ket_thuc
-    ORDER BY 
-        thu_ngan.ma
+    GROUP BY
+        thu_ngan.ma_quay
+    ORDER BY
+        thu_ngan.ma_quay;
 END $$
+DELIMITER ;
 
-DELIMITER
-    $$
+DELIMITER $$
 CREATE DEFINER = `root`@`localhost` PROCEDURE `phuoc_get_data_2`(
-    -- IN `ma_quay` CHAR(12)
     IN `min_tien` DECIMAL(11,2)
 )
 BEGIN
@@ -133,8 +128,72 @@ BEGIN
         don_hang.ma_thu_ngan = thu_ngan.ma
     GROUP BY
         ma_quay
-    HAVING 
+    HAVING
         AVG(tong_tien) > min_tien
-    ORDER BY 
+    ORDER BY
         AVG(tong_tien)
 END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
+FUNCTION `so_don_hang_trong_ngay` (`check_date` DATE)
+RETURNS INT(11)
+BEGIN
+    DECLARE total INT;
+    DECLARE temp INT;
+    DECLARE done INT DEFAULT false;
+    DECLARE cur CURSOR FOR SELECT ngay_tao from don_hang;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = true;
+    set @dif = TIMESTAMPDIFF(DAY, check_date, CURDATE());
+    IF @dif < 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'ngay nay chua xay ra';
+    END IF;
+
+    SET total = 0;
+    OPEN cur;
+    FETCH cur INTO temp;
+    WHILE(NOT done)
+    DO
+        IF temp = date
+        THEN
+        SET total = total + 1;
+        END IF;
+        FETCH cur INTO temp;
+    END WHILE;
+
+    CLOSE cur;
+    RETURN total;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
+FUNCTION `so_don_hang_co_tong_tien_lon_hon` (`num` INT)
+RETURNS INT(11)
+BEGIN
+    DECLARE total INT;
+    DECLARE temp INT;
+    DECLARE done INT DEFAULT false;
+    DECLARE cur CURSOR FOR SELECT tong_tien from don_hang;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = true;
+
+    IF num <= 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'tham số đầu vào num phải > 0';
+    END IF;
+
+    SET total = 0;
+    OPEN cur;
+    FETCH cur INTO temp;
+    WHILE(NOT done)
+    DO
+        IF temp > num
+        THEN
+        SET total = total + 1;
+        END IF;
+        FETCH cur INTO temp;
+    END WHILE;
+    CLOSE cur;
+    RETURN total;
+END $$
+DELIMITER ;
