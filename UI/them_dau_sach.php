@@ -80,12 +80,6 @@ if (isset($_POST["btn_create"])) {
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-          <li class="nav-item" style="margin-right: 10px;">
-            <a href="./get_data_2.php" class="btn btn-primary ">Tìm nhà xuất bản có số đầu sách lớn hơn</a>
-          </li>
-          <li class="nav-item" style="margin-right: 10px;">
-            <a href="./get_data_1.php" class="btn btn-secondary ">Tìm các đầu sách thuộc nhà xuất bản</a>
-          </li>
           <li class="nav-item">
             <a href="./dau_sach.php" class="btn btn-primary">Trở về trang đầu sách</a>
           </li>
