@@ -131,7 +131,7 @@ BEGIN
     HAVING
         AVG(tong_tien) > min_tien
     ORDER BY
-        AVG(tong_tien)
+        AVG(tong_tien);
 END $$
 DELIMITER ;
 
