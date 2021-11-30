@@ -48,8 +48,19 @@ END $$
 -- END $$
 -- DELIMITER ;
 
+
 DELIMITER $$
-CREATE TRIGGER after_them_quyen_sach_vao_bao_gom
+CREATE TRIGGER `before_danh_dau_insert`
+BEFORE INSERT ON `giam_gia`
+FOR EACH ROW
+BEGIN
+    UPDATE voucher SET da_su_dung = 1 WHERE ma = NEW.ma;
+END $$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE TRIGGER after_xoa_quyen_sach_khoi_bao_gom
 AFTER DELETE ON bao_gom
 FOR EACH ROW
 BEGIN
@@ -62,12 +73,12 @@ BEGIN
     SELECT ma_dau_sach
     INTO update_ma_dau_sach
     FROM quyen_sach
-    WHERE quyen_sach.ma = NEW.ma_quyen_sach;
+    WHERE quyen_sach.ma = OLD.ma_quyen_sach;
 
     SELECT so_luong, tong_tien
     INTO update_so_luong, update_tong_tien
     FROM don_hang
-    WHERE don_hang.ma= NEW.ma_don;
+    WHERE don_hang.ma= OLD.ma_don;
 
     SELECT gia_niem_yet
     INTO update_tien
@@ -79,7 +90,7 @@ BEGIN
 
     UPDATE don_hang
     SET so_luong = update_so_luong, tong_tien = update_tong_tien
-    WHERE ma = NEW.ma_don;
+    WHERE ma = OLD.ma_don;
 END $$
 DELIMITER ;
 
