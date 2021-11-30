@@ -40,31 +40,30 @@ $conn->close();
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="voucher.php" style="font-weight: 700;">Bảng Voucher</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">Trang của P</a>
+            <a class="nav-link" href="nha_xuat_ban.php">Nhà xuất bản</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Trang của H</a>
+            <a class="nav-link" href="dau_sach.php">Bảng đầu sách</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="nhan_vien.php">Nhân viên</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Trang của K</a>
+            <a class="nav-link" href="don_hang_online.php">Đơn hàng online</a>
+          </li>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
@@ -89,7 +88,7 @@ $conn->close();
     <table class="table table-striped table-hover">
       <thead>
         <tr>
-        <th scope="col">STT</th>
+          <th scope="col">STT</th>
           <th scope="col">Mã voucher</th>
           <th scope="col">Ngày hiệu lực</th>
           <th scope="col">Ngày hết hiệu lực</th>
@@ -102,8 +101,7 @@ $conn->close();
       </tbody>
     </table>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
   </script>
 </body>
 
