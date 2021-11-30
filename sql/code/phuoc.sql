@@ -156,7 +156,7 @@ BEGIN
     FETCH cur INTO temp;
     WHILE(NOT done)
     DO
-        IF temp = date
+        IF temp = check_date
         THEN
         SET total = total + 1;
         END IF;
