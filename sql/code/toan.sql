@@ -22,6 +22,99 @@ DELIMITER ;
 
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost`
+PROCEDURE `assert_id_length`(
+    IN  `id`                    CHAR(255)
+)
+BEGIN
+    IF ISNULL(id) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'id is null';
+    END IF;
+    IF LENGTH(id) <> 12 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'length of id is not 12';
+    END IF;
+END$$
+DELIMITER ;
+
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
+PROCEDURE `assert_has_value_varchar`(
+    IN  `val`                   VARCHAR(255),
+    IN  `name`                  VARCHAR(40)
+)
+BEGIN
+    set @name = IFNULL(name, "VARCHAR");
+    IF ISNULL(val) THEN
+        set @message = CONCAT(@name, " is null");
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
+    END IF;
+    IF val = "" THEN
+        set @message = CONCAT(@name, " is empty");
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
+    END IF;
+END$$
+DELIMITER ;
+
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
+PROCEDURE `assert_has_value_char`(
+    IN  `val`                   CHAR(255),
+    IN  `name`                  VARCHAR(40)
+)
+BEGIN
+    set @name = IFNULL(name, "CHAR");
+    IF ISNULL(val) THEN
+        set @message = CONCAT(@name, " is null");
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
+    END IF;
+    IF val = "" THEN
+        set @message = CONCAT(@name, " is empty");
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
+    END IF;
+END$$
+DELIMITER ;
+
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
+PROCEDURE `assert_has_value_date`(
+    IN  `val`                   DATE,
+    IN  `name`                  VARCHAR(40)
+)
+BEGIN
+    set @name = IFNULL(name, "DATE");
+    IF ISNULL(val) THEN
+        set @message = CONCAT(@name, " is null");
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
+    END IF;
+END$$
+DELIMITER ;
+
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
+PROCEDURE `assert_has_value_decimal`(
+    IN  `val`                   DECIMAL(11, 2),
+    IN  `name`                  VARCHAR(40)
+)
+BEGIN
+    set @name = IFNULL(name, "DECIMAL");
+    IF ISNULL(val) THEN
+        set @message = CONCAT(@name, " is null");
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
+    END IF;
+END$$
+DELIMITER ;
+
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
 FUNCTION `is_valid_email`(
     `email` VARCHAR(60)
 )
@@ -118,97 +211,6 @@ END$$
 DELIMITER ;
 
 
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost`
-PROCEDURE `assert_has_value_varchar`(
-    IN  `val`                   VARCHAR(255),
-    IN  `name`                  VARCHAR(40)
-)
-BEGIN
-    set @name = IFNULL(name, "VARCHAR");
-    IF ISNULL(val) THEN
-        set @message = CONCAT(@name, " is null");
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
-    END IF;
-    IF val = "" THEN
-        set @message = CONCAT(@name, " is empty");
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
-    END IF;
-END$$
-DELIMITER ;
-
-
-
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost`
-PROCEDURE `assert_has_value_char`(
-    IN  `val`                   CHAR(255),
-    IN  `name`                  VARCHAR(40)
-)
-BEGIN
-    set @name = IFNULL(name, "CHAR");
-    IF ISNULL(val) THEN
-        set @message = CONCAT(@name, " is null");
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
-    END IF;
-    IF val = "" THEN
-        set @message = CONCAT(@name, " is empty");
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
-    END IF;
-END$$
-DELIMITER ;
-
-
-
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost`
-PROCEDURE `assert_has_value_date`(
-    IN  `val`                   DATE,
-    IN  `name`                  VARCHAR(40)
-)
-BEGIN
-    set @name = IFNULL(name, "DATE");
-    IF ISNULL(val) THEN
-        set @message = CONCAT(@name, " is null");
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
-    END IF;
-END$$
-DELIMITER ;
-
-
-
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost`
-PROCEDURE `assert_has_value_decimal`(
-    IN  `val`                   DECIMAL(11, 2),
-    IN  `name`                  VARCHAR(40)
-)
-BEGIN
-    set @name = IFNULL(name, "DECIMAL");
-    IF ISNULL(val) THEN
-        set @message = CONCAT(@name, " is null");
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @message;
-    END IF;
-END$$
-DELIMITER ;
-
-
-
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost`
-PROCEDURE `assert_id_length`(
-    IN  `id`                    CHAR(255)
-)
-BEGIN
-    IF ISNULL(id) THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'id is null';
-    END IF;
-    IF LENGTH(id) <> 12 THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'length of id is not 12';
-    END IF;
-END$$
-DELIMITER ;
-
 
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost`
@@ -291,7 +293,6 @@ DELIMITER ;
 
 
 
-
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost`
 PROCEDURE `assert_supervisor_has_minimum_salary`(
@@ -316,9 +317,7 @@ DELIMITER ;
 
 
 
-
--- CALL them_nhan_vien("Nguyễn Văn", "Hoàng", CAST("1997-08-29" AS DATE), "nguyen.van.hoang.9999@sahafake.com", "0989000111", null, "070802000100", 100000000, CAST("2017-07-20" AS DATE), "CNH000000000", 0);
-
+-- cau 1: thu tuc insert du lieu
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost`
 PROCEDURE `them_nhan_vien`(
@@ -382,51 +381,24 @@ BEGIN
     END IF;
 END$$
 DELIMITER ;
-
--- CALL them_nhan_vien(null, "a", CAST("2000-08-29" AS DATE), "a@a.a", "0123456789", null, "123123123123", 100000000, CAST("2017-07-20" AS DATE), "Co So 1", 0);
-
+-- CALL them_nhan_vien("Nguyễn Văn", "Hoàng", CAST("1997-08-29" AS DATE), "nguyen.van.hoang.9999@sahafake.com", "0989000111", null, "070802000100", 100000000, CAST("2017-07-20" AS DATE), "CNH000000000", 0);
 
 
 
+-- cau 2: trigger
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost`
-PROCEDURE `tom_tat_thong_tin_nhap_sach_theo_nha_xuat_ban`()
-leave_label:
+CREATE TRIGGER `kiem_tra_nhan_vien_update`
+BEFORE UPDATE ON `nhan_vien`
+FOR EACH ROW
 BEGIN
-    SELECT
-        nha_xuat_ban.ten, COUNT(*) AS so_luong_sach, SUM(dau_sach.gia_nhap) as tien_tra_nha_xuat_ban
-    FROM
-        nha_xuat_ban, dau_sach, quyen_sach
-    WHERE
-        dau_sach.ma_nha_xuat_ban = nha_xuat_ban.ma AND
-        quyen_sach.ma_dau_sach = dau_sach.ma
-    GROUP BY
-        nha_xuat_ban.ma
-    ORDER BY
-        quyen_sach.ma;
-END$$
+    CALL assert_age_aleast(NEW.ngay_sinh, 18);
+    CALL assert_valid_email(NEW.email);
+    CALL assert_valid_phone(NEW.sdt);
+    CALL assert_valid_ssn(NEW.cccd);
+    CALL assert_employee_has_minimum_salary(NEW.thoi_gian_bat_dau_lam, NEW.luong);
+END $$
 DELIMITER ;
-
-
-
-
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost`
-PROCEDURE `doanh_thu_chi_nhanh`()
-leave_label:
-BEGIN
-    SELECT
-        chi_nhanh.ten, SUM(thu_ngan.doanh_so) as doanh_so
-    FROM
-        chi_nhanh, nhan_vien, thu_ngan
-    WHERE
-        chi_nhanh.ma = nhan_vien.ma_chi_nhanh AND
-        nhan_vien.ma = thu_ngan.ma
-    GROUP BY
-        chi_nhanh.ma;
-END$$
-DELIMITER ;
-
+-- INSERT INTO nhan_vien VALUES ("NVI123123123", null, "a", CAST("2020-08-29" AS DATE), "a@a.a", "0123456789", null, "123123123123", 100000000, CAST("2017-07-20" AS DATE), "NBX000000000", "NVI000000000");
 
 
 
@@ -442,23 +414,6 @@ BEGIN
     CALL assert_employee_has_minimum_salary(NEW.thoi_gian_bat_dau_lam, NEW.luong);
 END $$
 DELIMITER ;
-
-
-
-DELIMITER $$
-CREATE TRIGGER `kiem_tra_nhan_vien_update`
-BEFORE UPDATE ON `nhan_vien`
-FOR EACH ROW
-BEGIN
-    CALL assert_age_aleast(NEW.ngay_sinh, 18);
-    CALL assert_valid_email(NEW.email);
-    CALL assert_valid_phone(NEW.sdt);
-    CALL assert_valid_ssn(NEW.cccd);
-    CALL assert_employee_has_minimum_salary(NEW.thoi_gian_bat_dau_lam, NEW.luong);
-END $$
-DELIMITER ;
-
--- INSERT INTO nhan_vien VALUES ("NVI123123123", null, "a", CAST("2020-08-29" AS DATE), "a@a.a", "0123456789", null, "123123123123", 100000000, CAST("2017-07-20" AS DATE), "NBX000000000", "NVI000000000");
 
 
 -- DELIMITER $$
@@ -489,6 +444,48 @@ DELIMITER ;
 
 
 
+-- cau 3: thu tuc chua cau SQL
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
+PROCEDURE `tom_tat_thong_tin_nhap_sach_theo_nha_xuat_ban`()
+leave_label:
+BEGIN
+    SELECT
+        nha_xuat_ban.ten, COUNT(*) AS so_luong_sach, SUM(dau_sach.gia_nhap) as tien_tra_nha_xuat_ban
+    FROM
+        nha_xuat_ban, dau_sach, quyen_sach
+    WHERE
+        dau_sach.ma_nha_xuat_ban = nha_xuat_ban.ma AND
+        quyen_sach.ma_dau_sach = dau_sach.ma
+    GROUP BY
+        nha_xuat_ban.ma
+    ORDER BY
+        quyen_sach.ma;
+END$$
+DELIMITER ;
+
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
+PROCEDURE `doanh_thu_chi_nhanh`()
+leave_label:
+BEGIN
+    SELECT
+        chi_nhanh.ten, SUM(thu_ngan.doanh_so) as doanh_so
+    FROM
+        chi_nhanh, nhan_vien, thu_ngan
+    WHERE
+        chi_nhanh.ma = nhan_vien.ma_chi_nhanh AND
+        nhan_vien.ma = thu_ngan.ma
+    GROUP BY
+        chi_nhanh.ma;
+END$$
+DELIMITER ;
+
+
+
+-- cau 4: ham
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost`
 FUNCTION `luong_trung_binh_chi_nhanh`(
@@ -508,7 +505,6 @@ BEGIN
     IF NOT ton_tai THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Mã chi nhánh không hợp lệ';
     END IF;
-
 
     SET tong_luong = 0.0;
     SET so_luong = 0;
@@ -546,7 +542,6 @@ BEGIN
     IF x < 0 THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Đầu vào không được nhỏ hơn 0';
     END IF;
-
 
     SET so_luong = 0;
     OPEN cur;
