@@ -398,7 +398,7 @@ BEGIN
     CALL assert_employee_has_minimum_salary(NEW.thoi_gian_bat_dau_lam, NEW.luong);
 END $$
 DELIMITER ;
--- INSERT INTO nhan_vien VALUES ("NVI123123123", null, "a", CAST("2020-08-29" AS DATE), "a@a.a", "0123456789", null, "123123123123", 100000000, CAST("2017-07-20" AS DATE), "NBX000000000", "NVI000000000");
+-- CALL them_nhan_vien("Nguyễn Văn", "Hoàng", CAST("1997-08-29" AS DATE), "nguyen.van.hoang.9999@sahafake.com", "0989000111", null, "070802000100", 100000000, CAST("2017-07-20" AS DATE), "CNH000000000", 0);
 
 
 
@@ -416,30 +416,31 @@ END $$
 DELIMITER ;
 
 
--- DELIMITER $$
--- CREATE TRIGGER `cap_nhap_doanh_so_khi_them_don_hang`
--- BEFORE INSERT ON `don_hang`
--- FOR EACH ROW
--- BEGIN
---     UPDATE thu_ngan
---     SET thu_ngan.doanh_so = thu_ngan.doanh_so + NEW.tong_tien
---     WHERE thu_ngan.ma = NEW.ma_thu_ngan;
--- END $$
--- DELIMITER ;
--- -- not tested
+DELIMITER $$
+CREATE TRIGGER `cap_nhap_doanh_so_khi_them_don_hang`
+BEFORE INSERT ON `don_hang`
+FOR EACH ROW
+BEGIN
+    UPDATE thu_ngan
+    SET thu_ngan.doanh_so = thu_ngan.doanh_so + NEW.tong_tien
+    WHERE thu_ngan.ma = NEW.ma_thu_ngan;
+END $$
+DELIMITER ;
+-- not tested
 
 
--- DELIMITER $$
--- CREATE TRIGGER `cap_nhap_doanh_so_khi_sua_don_hang`
--- BEFORE INSERT ON `don_hang`
--- FOR EACH ROW
--- BEGIN
---     UPDATE thu_ngan
---     SET thu_ngan.doanh_so = thu_ngan.doanh_so + NEW.tong_tien - OLD.tong_tien
---     WHERE thu_ngan.ma = NEW.ma_thu_ngan;
--- END $$
--- DELIMITER ;
--- -- not tested
+
+DELIMITER $$
+CREATE TRIGGER `cap_nhap_doanh_so_khi_sua_don_hang`
+BEFORE UPDATE ON `don_hang`
+FOR EACH ROW
+BEGIN
+    UPDATE thu_ngan
+    SET thu_ngan.doanh_so = thu_ngan.doanh_so + NEW.tong_tien - OLD.tong_tien
+    WHERE thu_ngan.ma = NEW.ma_thu_ngan;
+END $$
+DELIMITER ;
+-- not tested
 
 
 
