@@ -210,33 +210,6 @@ END$$
 DELIMITER ;
 
 
-
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost`
-PROCEDURE `them_nha_xuat_ban`(
-    IN  ten                     VARCHAR(40),
-    IN  email                   VARCHAR(60),
-    IN  sdt                     CHAR(10),
-    IN  dia_chi                 VARCHAR(200),
-    IN  website                 VARCHAR(255)
-)
-BEGIN
-    DECLARE ma CHAR(12);
-
-    CALL assert_has_value_varchar(ten, "ten");
-    CALL assert_has_value_varchar(email, "email");
-    CALL assert_valid_email(email);
-    CALL assert_valid_phone(sdt);
-
-    SET ma = (SELECT MAX(nha_xuat_ban.ma) FROM nha_xuat_ban);
-    SET ma = next_id(ma);
-    INSERT INTO nha_xuat_ban
-    VALUES (ma, ten, email, sdt, dia_chi, website);
-END$$
-DELIMITER ;
-
-
-
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost`
 PROCEDURE `assert_age_aleast`(
@@ -486,34 +459,6 @@ END $$
 DELIMITER ;
 
 -- INSERT INTO nhan_vien VALUES ("NVI123123123", null, "a", CAST("2020-08-29" AS DATE), "a@a.a", "0123456789", null, "123123123123", 100000000, CAST("2017-07-20" AS DATE), "NBX000000000", "NVI000000000");
-
-
-
-DELIMITER $$
-CREATE TRIGGER `kiem_tra_nha_xuat_ban_insert`
-BEFORE INSERT ON `nha_xuat_ban`
-FOR EACH ROW
-BEGIN
-    CALL assert_valid_email(NEW.email);
-    CALL assert_valid_phone(NEW.sdt);
-END $$
-DELIMITER ;
-
-
-
-
-DELIMITER $$
-CREATE TRIGGER `kiem_tra_nha_xuat_ban_update`
-BEFORE UPDATE ON `nha_xuat_ban`
-FOR EACH ROW
-BEGIN
-    CALL assert_valid_email(NEW.email);
-    CALL assert_valid_phone(NEW.sdt);
-END $$
-DELIMITER ;
-
-
-
 
 
 -- DELIMITER $$
