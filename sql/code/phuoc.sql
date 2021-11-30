@@ -1,4 +1,3 @@
--- * cau 1 -----------------------------------------------------------------
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost`
 PROCEDURE `them_nha_xuat_ban`(
@@ -40,8 +39,6 @@ BEGIN
 END$$
 DELIMITER ;
 
-
---  * cau 2 -------------------------------------------------------
 DELIMITER $$
 CREATE TRIGGER `kiem_tra_nha_xuat_ban`
 BEFORE UPDATE ON `nha_xuat_ban`
@@ -94,8 +91,6 @@ BEGIN
 END $$
 DELIMITER ;
 
--- * Cau 3 --------------------------------------------------------
--- ! a
 
 DELIMITER $$
 CREATE DEFINER = `root`@`localhost` PROCEDURE `phuoc_get_data_1`(
@@ -119,7 +114,6 @@ BEGIN
 END $$
 DELIMITER ;
 
--- ! b
 DELIMITER $$
 CREATE DEFINER = `root`@`localhost` PROCEDURE `phuoc_get_data_2`(
     IN `min_tien` DECIMAL(11,2)
@@ -137,6 +131,69 @@ BEGIN
     HAVING
         AVG(tong_tien) > min_tien
     ORDER BY
-        AVG(tong_tien);
+        AVG(tong_tien)
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
+FUNCTION `so_don_hang_trong_ngay` (`check_date` DATE)
+RETURNS INT(11)
+BEGIN
+    DECLARE total INT;
+    DECLARE temp INT;
+    DECLARE done INT DEFAULT false;
+    DECLARE cur CURSOR FOR SELECT ngay_tao from don_hang;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = true;
+    set @dif = TIMESTAMPDIFF(DAY, check_date, CURDATE());
+    IF @dif < 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'ngay nay chua xay ra';
+    END IF;
+
+    SET total = 0;
+    OPEN cur;
+    FETCH cur INTO temp;
+    WHILE(NOT done)
+    DO
+        IF temp = date
+        THEN
+        SET total = total + 1;
+        END IF;
+        FETCH cur INTO temp;
+    END WHILE;
+
+    CLOSE cur;
+    RETURN total;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost`
+FUNCTION `so_don_hang_co_tong_tien_lon_hon` (`num` INT)
+RETURNS INT(11)
+BEGIN
+    DECLARE total INT;
+    DECLARE temp INT;
+    DECLARE done INT DEFAULT false;
+    DECLARE cur CURSOR FOR SELECT tong_tien from don_hang;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = true;
+
+    IF num <= 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'tham số đầu vào num phải > 0';
+    END IF;
+
+    SET total = 0;
+    OPEN cur;
+    FETCH cur INTO temp;
+    WHILE(NOT done)
+    DO
+        IF temp > num
+        THEN
+        SET total = total + 1;
+        END IF;
+        FETCH cur INTO temp;
+    END WHILE;
+    CLOSE cur;
+    RETURN total;
 END $$
 DELIMITER ;
