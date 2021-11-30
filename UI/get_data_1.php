@@ -71,12 +71,6 @@ $conn->close();
           <li class="nav-item" style="margin-right: 10px;">
             <a href="./dau_sach.php" class="btn btn-primary">Trở về trang đầu sách</a>
           </li>
-          <li class="nav-item" style="margin-right: 10px;">
-            <a href="./get_data_2.php" class="btn btn-primary ">Tìm nhà xuất bản có số đầu sách lớn hơn</a>
-          </li>
-          <li class="nav-item">
-            <a href="./them_dau_sach.php" class="btn btn-primary ">Thêm đầu sách mới</a>
-          </li>
         </ul>
       </div>
     </div>
