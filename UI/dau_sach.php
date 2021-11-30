@@ -79,7 +79,7 @@ $conn->close();
             <a class="nav-link" href="./nhan_vien.php">Nhân viên (Toàn)</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">Đơn hàng online (Khang)</a>
+            <a class="nav-link" href="./don_hang_online.php">Đơn hàng online (Khang)</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
