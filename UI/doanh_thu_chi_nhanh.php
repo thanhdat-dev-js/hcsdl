@@ -1,6 +1,7 @@
 
 <?php
 include_once('init.php');
+include_once('nhan_vien_include.php');
 
 $query = 'CALL doanh_thu_chi_nhanh()';
 $result = $conn->query($query);

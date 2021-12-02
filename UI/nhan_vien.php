@@ -1,5 +1,6 @@
 <?php
 include_once('init.php');
+include_once('nhan_vien_include.php');
 
 if (isset($_POST["btn-del"])) {
   $ma = $_POST["ma"];

@@ -1,5 +1,6 @@
 <?php
 include_once('init.php');
+include_once('nhan_vien_include.php');
 
 $not_enough_information = false;
 

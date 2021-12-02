@@ -1,6 +1,7 @@
 
 <?php
 include_once('init.php');
+include_once('nhan_vien_include.php');
 
 $query = 'CALL tom_tat_thong_tin_nhap_sach_theo_nha_xuat_ban()';
 $result = $conn->query($query);
